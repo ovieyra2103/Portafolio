@@ -25,7 +25,7 @@ const Hero = () => {
               <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary to-ocean-400 opacity-75 blur"></div>
               <div className="relative rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-xl h-64 w-64 mx-auto">
                 <img
-                  src="https://via.placeholder.com/400"
+                  src="/lovable-uploads/ac4d6b01-bcd9-466e-b93d-287e7f3328de.png"
                   alt="Omar Vieyra"
                   className="object-cover w-full h-full"
                 />
