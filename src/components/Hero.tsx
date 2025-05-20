@@ -1,11 +1,14 @@
+
 import { ArrowDown, Linkedin, Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+
 const Hero = () => {
   const scrollToAbout = () => {
     document.querySelector("#about")?.scrollIntoView({
       behavior: "smooth"
     });
   };
+  
   return <section id="home" className="min-h-screen relative flex flex-col justify-center items-center pt-20 pb-12 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 bottom-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-ocean-100/30 to-transparent dark:from-ocean-900/20 dark:to-transparent" />
@@ -28,9 +31,12 @@ const Hero = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               <span className="text-primary">Omar</span> Vieyra
             </h1>
-            <h2 className="mt-4 text-xl md:text-2xl text-foreground/80 font-light">Especialista en Inteligencia Financiera, Desarrollo de Negocios e Innovación con IA
-Optimización de procesos | Estrategia comercial | Transformación digital
-          </h2>
+            <h2 className="mt-4 text-xl md:text-2xl text-foreground/80 font-light">
+              Especialista en Inteligencia Financiera, Desarrollo de Negocios e Innovación con IA
+            </h2>
+            <p className="mt-3 text-lg text-foreground/80 font-light">
+              Optimización de procesos | Estrategia comercial | Transformación digital
+            </p>
             <p className="mt-6 text-muted-foreground">
               Acámbaro, Guanajuato, México
             </p>
@@ -60,4 +66,5 @@ Optimización de procesos | Estrategia comercial | Transformación digital
       </div>
     </section>;
 };
+
 export default Hero;
