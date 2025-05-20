@@ -1,19 +1,32 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { FileText } from "lucide-react";
+import { FileText, Download } from "lucide-react";
+import { toast } from "@/hooks/use-toast";
 
 const About = () => {
   const skills = ["Zoho Inventory", "Zoho Books", "Zoho Expenses", "Google Colab", "Power BI", "Microsoft Fabric", "GlobalGap", "Primus", "Automatización", "Optimización de Rutas", "Gestión de Viáticos", "Marketing con IA", "Consultoría"];
   
   const handleDownloadCV = () => {
     // Create a link to download the CV file
-    const link = document.createElement('a');
-    link.href = '/lovable-uploads/ac4d6b01-bcd9-466e-b93d-287e7f3328de.png'; // Replace with actual CV file path when available
-    link.download = 'Omar-Vieyra-CV.pdf';
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+    try {
+      const link = document.createElement('a');
+      link.href = '/lovable-uploads/ac4d6b01-bcd9-466e-b93d-287e7f3328de.png'; // Using the available image as CV for now
+      link.download = 'Omar-Vieyra-CV.pdf';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      toast({
+        title: "Descarga iniciada",
+        description: "Tu CV se está descargando",
+      });
+    } catch (error) {
+      toast({
+        title: "Error en la descarga",
+        description: "No se pudo descargar el CV. Intenta nuevamente.",
+        variant: "destructive"
+      });
+    }
   };
 
   return <section id="about" className="py-20 relative overflow-hidden">
@@ -53,7 +66,7 @@ const About = () => {
               
               <div className="mt-8">
                 <Button className="btn-gradient" onClick={handleDownloadCV}>
-                  <FileText className="w-4 h-4 mr-2" />
+                  <Download className="w-4 h-4 mr-2" />
                   Descargar CV
                 </Button>
               </div>
