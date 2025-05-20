@@ -1,17 +1,12 @@
-
 import { ArrowDown, Linkedin, Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
-
 const Hero = () => {
   const scrollToAbout = () => {
-    document.querySelector("#about")?.scrollIntoView({ behavior: "smooth" });
+    document.querySelector("#about")?.scrollIntoView({
+      behavior: "smooth"
+    });
   };
-
-  return (
-    <section
-      id="home"
-      className="min-h-screen relative flex flex-col justify-center items-center pt-20 pb-12 overflow-hidden"
-    >
+  return <section id="home" className="min-h-screen relative flex flex-col justify-center items-center pt-20 pb-12 overflow-hidden">
       <div className="absolute top-0 left-0 right-0 bottom-0 -z-10">
         <div className="absolute inset-0 bg-gradient-to-br from-ocean-100/30 to-transparent dark:from-ocean-900/20 dark:to-transparent" />
         <div className="absolute top-20 right-0 w-80 h-80 bg-primary/5 rounded-full filter blur-3xl" />
@@ -24,11 +19,7 @@ const Hero = () => {
             <div className="relative">
               <div className="absolute -inset-1 rounded-full bg-gradient-to-br from-primary to-ocean-400 opacity-75 blur"></div>
               <div className="relative rounded-full overflow-hidden border-4 border-white dark:border-slate-800 shadow-xl h-64 w-64 mx-auto">
-                <img
-                  src="/lovable-uploads/ac4d6b01-bcd9-466e-b93d-287e7f3328de.png"
-                  alt="Omar Vieyra"
-                  className="object-cover w-full h-full"
-                />
+                <img src="/lovable-uploads/ac4d6b01-bcd9-466e-b93d-287e7f3328de.png" alt="Omar Vieyra" className="object-cover w-full h-full" />
               </div>
             </div>
           </div>
@@ -37,9 +28,9 @@ const Hero = () => {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
               <span className="text-primary">Omar</span> Vieyra
             </h1>
-            <h2 className="mt-4 text-xl md:text-2xl text-foreground/80 font-light">
-              Ingeniero en Desarrollo e Innovación | Consultor en Tecnología y Marketing AI
-            </h2>
+            <h2 className="mt-4 text-xl md:text-2xl text-foreground/80 font-light">Especialista en Inteligencia Financiera, Desarrollo de Negocios e Innovación con IA
+Optimización de procesos | Estrategia comercial | Transformación digital
+          </h2>
             <p className="mt-6 text-muted-foreground">
               Acámbaro, Guanajuato, México
             </p>
@@ -62,17 +53,11 @@ const Hero = () => {
         </div>
 
         <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-          <button
-            onClick={scrollToAbout}
-            className="bg-white dark:bg-slate-800 p-2 rounded-full shadow-md"
-            aria-label="Scroll to about section"
-          >
+          <button onClick={scrollToAbout} className="bg-white dark:bg-slate-800 p-2 rounded-full shadow-md" aria-label="Scroll to about section">
             <ArrowDown className="w-6 h-6 text-primary" />
           </button>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;

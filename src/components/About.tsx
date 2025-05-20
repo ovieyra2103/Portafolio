@@ -1,19 +1,9 @@
-
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { FileText } from "lucide-react";
-
 const About = () => {
-  const skills = [
-    "Zoho Inventory", "Zoho Books", "Zoho Expenses", 
-    "Google Colab", "Power BI", "Microsoft Fabric",
-    "GlobalGap", "Primus", "Automatización", 
-    "Optimización de Rutas", "Gestión de Viáticos",
-    "Marketing con IA", "Consultoría"
-  ];
-
-  return (
-    <section id="about" className="py-20 relative overflow-hidden">
+  const skills = ["Zoho Inventory", "Zoho Books", "Zoho Expenses", "Google Colab", "Power BI", "Microsoft Fabric", "GlobalGap", "Primus", "Automatización", "Optimización de Rutas", "Gestión de Viáticos", "Marketing con IA", "Consultoría"];
+  return <section id="about" className="py-20 relative overflow-hidden">
       <div className="absolute top-40 right-0 w-72 h-72 bg-primary/5 rounded-full filter blur-3xl animate-pulse-light" />
       <div className="absolute bottom-20 left-20 w-64 h-64 bg-ocean-300/10 rounded-full filter blur-3xl" />
       
@@ -33,7 +23,8 @@ const About = () => {
               <div className="space-y-6">
                 <div className="border-l-2 border-primary pl-4 py-1">
                   <h4 className="font-medium text-primary">Hielo Polar del Centro</h4>
-                  <p className="text-sm text-muted-foreground">Optimización de rutas, marketing y gestión de ventas</p>
+                  <p className="text-sm text-muted-foreground">Especialista en Inteligencia Financiera, Desarrollo de Negocios e Innovación Operativa con IA
+                </p>
                 </div>
                 
                 <div className="border-l-2 border-primary pl-4 py-1">
@@ -61,11 +52,9 @@ const About = () => {
               <h3 className="text-xl font-semibold mb-6">Habilidades</h3>
               
               <div className="flex flex-wrap gap-2">
-                {skills.map((skill, index) => (
-                  <Badge key={index} className="skill-badge">
+                {skills.map((skill, index) => <Badge key={index} className="skill-badge">
                     {skill}
-                  </Badge>
-                ))}
+                  </Badge>)}
               </div>
               
               <h3 className="text-xl font-semibold mt-8 mb-4">Proyecto en Desarrollo</h3>
@@ -77,8 +66,6 @@ const About = () => {
           </div>
         </div>
       </div>
-    </section>
-  );
+    </section>;
 };
-
 export default About;
