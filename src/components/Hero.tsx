@@ -32,11 +32,15 @@ const Hero = () => {
               <span className="text-primary">Omar</span> Vieyra
             </h1>
             <h2 className="mt-4 text-xl md:text-2xl text-foreground/80 font-light">
-              Especialista en Inteligencia Financiera, Desarrollo de Negocios e Innovación con IA
+              Estratega en Transformación Digital con enfoque en Finanzas, Innovación Comercial y Automatización Inteligente.
             </h2>
             <p className="mt-3 text-lg text-foreground/80 font-light">
-              Optimización de procesos | Estrategia comercial | Transformación digital
+              Aplico inteligencia artificial y herramientas digitales para optimizar procesos, mejorar la rentabilidad y acelerar el crecimiento de negocios.
             </p>
+            <p className="mt-3 text-lg text-foreground/80 font-light">
+              Mi enfoque combina análisis financiero, visión de mercado y soluciones tecnológicas para transformar la operación de empresas en resultados medibles.
+            </p>
+
             <p className="mt-6 text-muted-foreground">
               Acámbaro, Guanajuato, México
             </p>

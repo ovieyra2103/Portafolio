@@ -3,15 +3,36 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { FileText, Download } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
+import { Avatar } from "@/components/ui/avatar";
+import { Card } from "@/components/ui/card";
 
 const About = () => {
   const skills = ["Zoho Inventory", "Zoho Books", "Zoho Expenses", "Google Colab", "Power BI", "Microsoft Fabric", "GlobalGap", "Primus", "Automatización", "Optimización de Rutas", "Gestión de Viáticos", "Marketing con IA", "Consultoría"];
   
+  const services = [
+    {
+      icon: "🔍",
+      title: "Optimización Financiera y de Procesos",
+      description: "Análisis de costos, control de gastos, automatización contable y estrategias para mejorar la rentabilidad del negocio."
+    },
+    {
+      icon: "📈",
+      title: "Marketing Estratégico y Digital",
+      description: "Diseño de campañas inteligentes, posicionamiento de marca y uso de herramientas de IA para generar contenido y captar clientes."
+    },
+    {
+      icon: "🤖",
+      title: "Transformación Digital con IA",
+      description: "Implementación de soluciones tecnológicas personalizadas para automatizar tareas repetitivas, mejorar flujos de trabajo y escalar operaciones."
+    }
+  ];
+  
   const handleDownloadCV = () => {
-    // Create a link to download the CV file
     try {
+      // Create a link to download the CV file
       const link = document.createElement('a');
-      link.href = '/lovable-uploads/ac4d6b01-bcd9-466e-b93d-287e7f3328de.png'; // Using the available image as CV for now
+      // Link to the actual CV file - should be a PDF stored in your public folder
+      link.href = '/lovable-uploads/ac4d6b01-bcd9-466e-b93d-287e7f3328de.png'; // You should replace this with the actual CV PDF
       link.download = 'Omar-Vieyra-CV.pdf';
       document.body.appendChild(link);
       link.click();
@@ -39,9 +60,16 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
           <div className="lg:col-span-2 animate-fade-right">
             <div className="glass-card rounded-xl p-6 h-full">
-              <p className="text-lg">
-                Soy un ingeniero en desarrollo e innovación empresarial con experiencia en automatización 
-                de procesos, implementación de herramientas tecnológicas y optimización de negocios.
+              <p className="text-lg mb-4">
+                Soy un profesional con sólida experiencia en análisis financiero, desarrollo de negocios y marketing digital, especializado en la implementación de herramientas basadas en inteligencia artificial para mejorar la eficiencia operativa.
+              </p>
+              
+              <p className="text-lg mb-4">
+                Mi objetivo es ayudar a empresas a crecer de manera estratégica, automatizando procesos clave y aprovechando al máximo los datos para tomar decisiones más inteligentes.
+              </p>
+              
+              <p className="text-lg mb-6">
+                He liderado proyectos en industrias como alimentos, logística, tecnología y retail, creando soluciones que reducen costos, aumentan la productividad y fortalecen la presencia de marca.
               </p>
               
               <h3 className="text-xl font-semibold mt-6 mb-4">Experiencia Profesional</h3>
@@ -83,6 +111,19 @@ const About = () => {
                   </Badge>)}
               </div>
               
+              <h3 className="text-xl font-semibold mt-8 mb-6">Servicios</h3>
+              <div className="space-y-6">
+                {services.map((service, index) => (
+                  <div key={index} className="bg-primary/5 dark:bg-primary/10 p-4 rounded-lg">
+                    <div className="flex items-center gap-3 mb-2">
+                      <span className="text-2xl">{service.icon}</span>
+                      <h4 className="font-medium text-primary">{service.title}</h4>
+                    </div>
+                    <p className="text-sm">{service.description}</p>
+                  </div>
+                ))}
+              </div>
+              
               <h3 className="text-xl font-semibold mt-8 mb-4">Proyecto en Desarrollo</h3>
               <div className="bg-primary/10 dark:bg-primary/5 p-4 rounded-lg">
                 <h4 className="font-medium text-primary">AI Nexus</h4>
@@ -90,6 +131,21 @@ const About = () => {
               </div>
             </div>
           </div>
+        </div>
+      </div>
+      
+      {/* Nueva sección de servicios destacados */}
+      <div className="container mx-auto px-4 mt-16">
+        <h2 className="text-2xl font-bold text-center mb-10">Mis Servicios</h2>
+        
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {services.map((service, index) => (
+            <Card key={index} className="p-6 hover:shadow-lg transition-all bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 border-none shadow-md">
+              <div className="text-4xl mb-4 text-center">{service.icon}</div>
+              <h3 className="text-xl font-semibold mb-3 text-center text-primary">{service.title}</h3>
+              <p className="text-center text-muted-foreground">{service.description}</p>
+            </Card>
+          ))}
         </div>
       </div>
     </section>;
