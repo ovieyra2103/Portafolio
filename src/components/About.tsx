@@ -1,9 +1,11 @@
+
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { FileText, Download } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { Avatar } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
+import { generateInteractivePDF, getCVData } from "./CVGenerator";
 
 const About = () => {
   const skills = ["Zoho Inventory", "Zoho Books", "Zoho Expenses", "Google Colab", "Power BI", "Microsoft Fabric", "GlobalGap", "Primus", "Automatización", "Optimización de Rutas", "Gestión de Viáticos", "Marketing con IA", "Consultoría"];
@@ -26,24 +28,25 @@ const About = () => {
     }
   ];
   
-  const handleDownloadCV = () => {
+  const handleDownloadCV = async () => {
     try {
-      // Create a link to download the CV file - using the PNG image as CV for now
-      const link = document.createElement('a');
-      link.href = '/lovable-uploads/ac4d6b01-bcd9-466e-b93d-287e7f3328de.png';
-      link.download = 'Omar-Vieyra-CV.png'; // Changed to .png since the file is actually a PNG
-      link.target = '_blank'; // Open in new tab to ensure download works
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
       toast({
-        title: "Descarga iniciada",
-        description: "Tu CV se está descargando",
+        title: "Generando CV...",
+        description: "Por favor espera mientras se genera tu CV interactivo",
+      });
+      
+      const cvData = getCVData();
+      await generateInteractivePDF(cvData);
+      
+      toast({
+        title: "¡CV descargado exitosamente!",
+        description: "Tu CV interactivo en PDF se ha generado con códigos QR y enlaces clickeables",
       });
     } catch (error) {
+      console.error('Error generating PDF:', error);
       toast({
-        title: "Error en la descarga",
-        description: "No se pudo descargar el CV. Intenta nuevamente.",
+        title: "Error al generar CV",
+        description: "Hubo un problema generando el PDF. Intenta nuevamente.",
         variant: "destructive"
       });
     }
@@ -94,7 +97,7 @@ const About = () => {
               <div className="mt-8">
                 <Button className="btn-gradient" onClick={handleDownloadCV}>
                   <Download className="w-4 h-4 mr-2" />
-                  Descargar CV
+                  Descargar CV Interactivo (PDF)
                 </Button>
               </div>
             </div>
