@@ -67,7 +67,7 @@ const Projects = () => {
       description: "Desarrollo e implementación de sistema para la gestión de producción.",
       detailedDescription: "Implementación de una web app que permite gestionar de forma ágil y precisa la producción y distribución interna en una fabrica de hielo, automatizando el flujo actual, generando datos en tiempo real.",
       tags: ["Web App", "Desarrollo", "Inventarios"],
-      image: "./lovable-uploads/Produccion-Hielo.png?q=80&w=1000&auto=format&fit=crop"
+      image: "./lovable-uploads/control-produccion.gif?q=80&w=1000&auto=format&fit=crop"
     }
   ];
 
