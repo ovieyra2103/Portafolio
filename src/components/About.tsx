@@ -1,4 +1,3 @@
-
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { FileText, Download } from "lucide-react";
@@ -29,11 +28,11 @@ const About = () => {
   
   const handleDownloadCV = () => {
     try {
-      // Create a link to download the CV file
+      // Create a link to download the CV file - using the PNG image as CV for now
       const link = document.createElement('a');
-      // Link to the actual CV file - should be a PDF stored in your public folder
-      link.href = '/lovable-uploads/ac4d6b01-bcd9-466e-b93d-287e7f3328de.png'; // You should replace this with the actual CV PDF
-      link.download = 'Omar-Vieyra-CV.pdf';
+      link.href = '/lovable-uploads/ac4d6b01-bcd9-466e-b93d-287e7f3328de.png';
+      link.download = 'Omar-Vieyra-CV.png'; // Changed to .png since the file is actually a PNG
+      link.target = '_blank'; // Open in new tab to ensure download works
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
@@ -50,7 +49,8 @@ const About = () => {
     }
   };
 
-  return <section id="about" className="py-20 relative overflow-hidden">
+  return (
+    <section id="about" className="py-20 relative overflow-hidden">
       <div className="absolute top-40 right-0 w-72 h-72 bg-primary/5 rounded-full filter blur-3xl animate-pulse-light" />
       <div className="absolute bottom-20 left-20 w-64 h-64 bg-ocean-300/10 rounded-full filter blur-3xl" />
       
@@ -77,8 +77,7 @@ const About = () => {
               <div className="space-y-6">
                 <div className="border-l-2 border-primary pl-4 py-1">
                   <h4 className="font-medium text-primary">Hielo Polar del Centro</h4>
-                  <p className="text-sm text-muted-foreground">Especialista en Inteligencia Financiera, Desarrollo de Negocios e Innovación Operativa con IA
-                </p>
+                  <p className="text-sm text-muted-foreground">Especialista en Inteligencia Financiera, Desarrollo de Negocios e Innovación Operativa con IA</p>
                 </div>
                 
                 <div className="border-l-2 border-primary pl-4 py-1">
@@ -106,9 +105,11 @@ const About = () => {
               <h3 className="text-xl font-semibold mb-6">Habilidades</h3>
               
               <div className="flex flex-wrap gap-2">
-                {skills.map((skill, index) => <Badge key={index} className="skill-badge">
+                {skills.map((skill, index) => (
+                  <Badge key={index} className="skill-badge">
                     {skill}
-                  </Badge>)}
+                  </Badge>
+                ))}
               </div>
               
               <h3 className="text-xl font-semibold mt-8 mb-6">Servicios</h3>
@@ -134,7 +135,6 @@ const About = () => {
         </div>
       </div>
       
-      {/* Nueva sección de servicios destacados */}
       <div className="container mx-auto px-4 mt-16">
         <h2 className="text-2xl font-bold text-center mb-10">Mis Servicios</h2>
         
@@ -148,6 +148,8 @@ const About = () => {
           ))}
         </div>
       </div>
-    </section>;
+    </section>
+  );
 };
+
 export default About;
