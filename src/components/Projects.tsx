@@ -60,6 +60,14 @@ const Projects = () => {
       detailedDescription: "Consultoría e implementación de la plataforma GastosdeViaje.Mx para la automatización de la gestión de viáticos y facturación electrónica, mejorando la eficiencia administrativa y reduciendo errores en el proceso de reembolso.",
       tags: ["Zoho", "Viáticos", "Facturación"],
       image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1000&auto=format&fit=crop"
+    },
+    {
+      id: 6,
+      title: "Desarrollo a medida para el control de producción",
+      description: "Desarrollo e implementación de sistema para la gestión de producción.",
+      detailedDescription: "Implementación de una web app que permite gestionar de forma ágil y precisa la producción y distribución interna en una fabrica de hielo, automatizando el flujo actual, generando datos en tiempo real.",
+      tags: ["Web App", "Desarrollo", "Inventarios"],
+      image: "./lovable-uploads/Produccion-Hielo.png?q=80&w=1000&auto=format&fit=crop"
     }
   ];
 
