@@ -59,7 +59,7 @@ const Projects = () => {
       description: "Automatización de la gestión de viáticos y facturación electrónica en empresas.",
       detailedDescription: "Consultoría e implementación de la plataforma GastosdeViaje.Mx para la automatización de la gestión de viáticos y facturación electrónica, mejorando la eficiencia administrativa y reduciendo errores en el proceso de reembolso.",
       tags: ["Zoho", "Viáticos", "Facturación"],
-      image: "https://images.unsplash.com/photo-1553729459-efe14ef6055d?q=80&w=1000&auto=format&fit=crop"
+      image: "./lovable-uploads/gastosdeviajemx.gif?q=80&w=1000&auto=format&fit=crop"
     },
     {
       id: 6,
