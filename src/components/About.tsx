@@ -81,19 +81,40 @@ const About = () => {
               <h3 className="text-xl font-semibold mt-6 mb-4">{t('experienceTitle')}</h3>
               
               <div className="space-y-6">
-                <div className="border-l-2 border-primary pl-4 py-1">
-                  <h4 className="font-medium text-primary">Hielo Polar del Centro</h4>
-                  <p className="text-sm text-muted-foreground">Especialista en Inteligencia Financiera, Desarrollo de Negocios e Innovación Operativa con IA</p>
+                <div className="border-l-2 border-primary pl-4 py-2">
+                  <div className="flex justify-between items-start mb-1">
+                    <h4 className="font-medium text-primary">Especialista en Desarrollo de Negocios</h4>
+                    <span className="text-xs text-muted-foreground">2023 - Presente</span>
+                  </div>
+                  <p className="text-sm font-medium mb-1">Hielo Polar del Centro</p>
+                  <p className="text-sm text-muted-foreground">Liderando iniciativas de transformación digital e implementación de sistemas para optimizar operaciones. Desarrollo de estrategias de marketing y automatización de procesos administrativos.</p>
                 </div>
                 
-                <div className="border-l-2 border-primary pl-4 py-1">
-                  <h4 className="font-medium text-primary">Focaltec (GastosdeViaje.Mx)</h4>
-                  <p className="text-sm text-muted-foreground">Consultoría en herramientas tecnológicas</p>
+                <div className="border-l-2 border-primary pl-4 py-2">
+                  <div className="flex justify-between items-start mb-1">
+                    <h4 className="font-medium text-primary">Fundador y Consultor Principal</h4>
+                    <span className="text-xs text-muted-foreground">2024 - Presente</span>
+                  </div>
+                  <p className="text-sm font-medium mb-1">AI Nexus</p>
+                  <p className="text-sm text-muted-foreground">Ofreciendo servicios de consultoría en tecnología, automatización y marketing inteligente para pequeñas y medianas empresas. Implementación de soluciones basadas en IA.</p>
                 </div>
                 
-                <div className="border-l-2 border-primary pl-4 py-1">
-                  <h4 className="font-medium text-primary">Empaque de Limón</h4>
-                  <p className="text-sm text-muted-foreground">Automatización de exportaciones y certificaciones GlobalGap y Primus</p>
+                <div className="border-l-2 border-primary pl-4 py-2">
+                  <div className="flex justify-between items-start mb-1">
+                    <h4 className="font-medium text-primary">Coordinador de procesos y exportaciones</h4>
+                    <span className="text-xs text-muted-foreground">2022 - 2023</span>
+                  </div>
+                  <p className="text-sm font-medium mb-1">Empaque de limón</p>
+                  <p className="text-sm text-muted-foreground">Gestión y optimización de procesos logísticos y de exportación. Implementación de sistemas de seguimiento y control de calidad.</p>
+                </div>
+                
+                <div className="border-l-2 border-primary pl-4 py-2">
+                  <div className="flex justify-between items-start mb-1">
+                    <h4 className="font-medium text-primary">Desarrollo de Negocios</h4>
+                    <span className="text-xs text-muted-foreground">2021 - 2022</span>
+                  </div>
+                  <p className="text-sm font-medium mb-1">Focaltec / GastosdeViaje.Mx</p>
+                  <p className="text-sm text-muted-foreground">Responsable de estrategias de crecimiento y expansión. Desarrollo e implementación de planes de marketing digital y gestión de relaciones con clientes.</p>
                 </div>
               </div>
               
