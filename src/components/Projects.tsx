@@ -51,7 +51,7 @@ const Projects = () => {
       description: "Reducción de costos de combustible y mejora en tiempos de entrega en Hielo Polar del Centro.",
       detailedDescription: "Implementación de un sistema de optimización de rutas de reparto que permitió reducir los costos de combustible en un 25% y mejorar los tiempos de entrega en un 30%, aumentando la satisfacción del cliente y la eficiencia operativa.",
       tags: ["Logística", "Optimización", "Análisis"],
-      image: "https://images.unsplash.com/photo-1618335829737-2228915674e0?q=80&w=1000&auto=format&fit=crop"
+      image: "/src/assets/route-optimization.jpg"
     },
     {
       id: 5,
