@@ -1,10 +1,12 @@
 
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const { t } = useLanguage();
 
   const toggleMenu = () => setMenuOpen(!menuOpen);
   
@@ -18,11 +20,11 @@ const Header = () => {
   }, []);
 
   const sections = [
-    { name: "Inicio", href: "#home" },
-    { name: "Sobre Mí", href: "#about" },
-    { name: "Proyectos", href: "#projects" },
-    { name: "Certificaciones", href: "#certifications" },
-    { name: "Contacto", href: "#contact" },
+    { name: t('home'), href: "#home" },
+    { name: t('about'), href: "#about" },
+    { name: t('projects'), href: "#projects" },
+    { name: t('certifications'), href: "#certifications" },
+    { name: t('contact'), href: "#contact" },
   ];
 
   const scrollToSection = (sectionId: string) => {

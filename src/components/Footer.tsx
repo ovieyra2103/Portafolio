@@ -1,7 +1,9 @@
 
 import { Heart } from "lucide-react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
+  const { t } = useLanguage();
   const currentYear = new Date().getFullYear();
   
   return (
@@ -16,10 +18,10 @@ const Footer = () => {
           
           <div className="text-center md:text-right">
             <p className="text-sm text-muted-foreground">
-              &copy; {currentYear} Omar Vieyra. Todos los derechos reservados.
+              &copy; {currentYear} Omar Vieyra. {t('allRightsReserved')}
             </p>
             <p className="text-xs text-muted-foreground mt-1 flex items-center justify-center md:justify-end">
-              Hecho con <Heart className="h-3 w-3 mx-1 text-red-500 fill-red-500" /> en Acámbaro, Guanajuato.
+              {t('madeWith')} <Heart className="h-3 w-3 mx-1 text-red-500 fill-red-500" /> {t('in')} Acámbaro, Guanajuato.
             </p>
           </div>
         </div>

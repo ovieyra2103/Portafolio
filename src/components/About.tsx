@@ -6,25 +6,28 @@ import { toast } from "@/hooks/use-toast";
 import { Avatar } from "@/components/ui/avatar";
 import { Card } from "@/components/ui/card";
 import { generateInteractivePDF, getCVData } from "./CVGenerator";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const About = () => {
+  const { t } = useLanguage();
+  
   const skills = ["Zoho Inventory", "Zoho Books", "Zoho Expenses", "Google Colab", "Power BI", "Microsoft Fabric", "GlobalGap", "Primus", "Automatización", "Optimización de Rutas", "Gestión de Viáticos", "Marketing con IA", "Consultoría"];
   
   const services = [
     {
       icon: "🔍",
-      title: "Optimización Financiera y de Procesos",
-      description: "Análisis de costos, control de gastos, automatización contable y estrategias para mejorar la rentabilidad del negocio."
+      title: t('service1Title'),
+      description: t('service1Description')
     },
     {
       icon: "📈",
-      title: "Marketing Estratégico y Digital",
-      description: "Diseño de campañas inteligentes, posicionamiento de marca y uso de herramientas de IA para generar contenido y captar clientes."
+      title: t('service2Title'),
+      description: t('service2Description')
     },
     {
       icon: "🤖",
-      title: "Transformación Digital con IA",
-      description: "Implementación de soluciones tecnológicas personalizadas para automatizar tareas repetitivas, mejorar flujos de trabajo y escalar operaciones."
+      title: t('service3Title'),
+      description: t('service3Description')
     }
   ];
   
@@ -58,24 +61,24 @@ const About = () => {
       <div className="absolute bottom-20 left-20 w-64 h-64 bg-ocean-300/10 rounded-full filter blur-3xl" />
       
       <div className="container mx-auto px-4">
-        <h2 className="section-title">Sobre Mí</h2>
+        <h2 className="section-title">{t('aboutTitle')}</h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
           <div className="lg:col-span-2 animate-fade-right">
             <div className="glass-card rounded-xl p-6 h-full">
               <p className="text-lg mb-4">
-                Soy un profesional con sólida experiencia en análisis financiero, desarrollo de negocios y marketing digital, especializado en la implementación de herramientas basadas en inteligencia artificial para mejorar la eficiencia operativa.
+                {t('aboutText1')}
               </p>
               
               <p className="text-lg mb-4">
-                Mi objetivo es ayudar a empresas a crecer de manera estratégica, automatizando procesos clave y aprovechando al máximo los datos para tomar decisiones más inteligentes.
+                {t('aboutText2')}
               </p>
               
               <p className="text-lg mb-6">
-                He liderado proyectos en industrias como alimentos, logística, tecnología y retail, creando soluciones que reducen costos, aumentan la productividad y fortalecen la presencia de marca.
+                {t('aboutText3')}
               </p>
               
-              <h3 className="text-xl font-semibold mt-6 mb-4">Experiencia Profesional</h3>
+              <h3 className="text-xl font-semibold mt-6 mb-4">{t('experienceTitle')}</h3>
               
               <div className="space-y-6">
                 <div className="border-l-2 border-primary pl-4 py-1">
@@ -97,7 +100,7 @@ const About = () => {
               <div className="mt-8">
                 <Button className="btn-gradient" onClick={handleDownloadCV}>
                   <Download className="w-4 h-4 mr-2" />
-                  Descargar CV Interactivo (PDF)
+                  {t('downloadCV')}
                 </Button>
               </div>
             </div>
@@ -105,7 +108,7 @@ const About = () => {
           
           <div className="animate-fade-left">
             <div className="glass-card rounded-xl p-6 h-full">
-              <h3 className="text-xl font-semibold mb-6">Habilidades</h3>
+              <h3 className="text-xl font-semibold mb-6">{t('skillsTitle')}</h3>
               
               <div className="flex flex-wrap gap-2">
                 {skills.map((skill, index) => (
@@ -115,7 +118,7 @@ const About = () => {
                 ))}
               </div>
               
-              <h3 className="text-xl font-semibold mt-8 mb-6">Servicios</h3>
+              <h3 className="text-xl font-semibold mt-8 mb-6">{t('servicesTitle')}</h3>
               <div className="space-y-6">
                 {services.map((service, index) => (
                   <div key={index} className="bg-primary/5 dark:bg-primary/10 p-4 rounded-lg">
@@ -139,7 +142,7 @@ const About = () => {
       </div>
       
       <div className="container mx-auto px-4 mt-16">
-        <h2 className="text-2xl font-bold text-center mb-10">Mis Servicios</h2>
+        <h2 className="text-2xl font-bold text-center mb-10">{t('servicesTitle')}</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, index) => (

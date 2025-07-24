@@ -1,8 +1,11 @@
 
 import { ArrowDown, Linkedin, Mail, Phone } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Hero = () => {
+  const { t } = useLanguage();
+  
   const scrollToAbout = () => {
     document.querySelector("#about")?.scrollIntoView({
       behavior: "smooth"
@@ -32,23 +35,23 @@ const Hero = () => {
               <span className="text-primary">Omar</span> Vieyra
             </h1>
             <h2 className="mt-4 text-xl md:text-2xl text-foreground/80 font-light">
-              Estratega en Transformación Digital con enfoque en Finanzas, Innovación Comercial y Automatización Inteligente.
+              {t('heroTitle')}
             </h2>
             <p className="mt-3 text-lg text-foreground/80 font-light">
-              Aplico inteligencia artificial y herramientas digitales para optimizar procesos, mejorar la rentabilidad y acelerar el crecimiento de negocios.
+              {t('heroDescription1')}
             </p>
             <p className="mt-3 text-lg text-foreground/80 font-light">
-              Mi enfoque combina análisis financiero, visión de mercado y soluciones tecnológicas para transformar la operación de empresas en resultados medibles.
+              {t('heroDescription2')}
             </p>
 
             <p className="mt-6 text-muted-foreground">
-              Acámbaro, Guanajuato, México
+              {t('location')}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
               <Button className="btn-gradient">
                 <Mail className="w-4 h-4 mr-2" />
-                Contacto
+                {t('contact')}
               </Button>
               <Button variant="outline">
                 <Linkedin className="w-4 h-4 mr-2" />

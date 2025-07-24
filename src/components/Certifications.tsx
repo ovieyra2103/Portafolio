@@ -1,8 +1,11 @@
 
 import { Award, Clock, Calendar } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Certifications = () => {
+  const { t } = useLanguage();
+  
   const certifications = [
     {
       id: 1,
@@ -47,7 +50,7 @@ const Certifications = () => {
       <div className="absolute bottom-0 left-0 -mb-20 w-80 h-80 bg-ocean-200/10 rounded-full filter blur-3xl" />
       
       <div className="container mx-auto px-4">
-        <h2 className="section-title">Cursos y Certificaciones</h2>
+        <h2 className="section-title">{t('certificationsTitle')}</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
           {certifications.map((cert, index) => (
@@ -79,11 +82,10 @@ const Certifications = () => {
           <Card className="inline-block glass-card max-w-md mx-auto p-6 animate-fade-in">
             <div className="flex items-center justify-center mb-4">
               <Clock className="h-8 w-8 text-primary mr-3" />
-              <h3 className="text-xl font-semibold">Actualización Continua</h3>
+              <h3 className="text-xl font-semibold">{t('continuousUpdate')}</h3>
             </div>
             <p className="text-muted-foreground">
-              Constantemente me mantengo actualizado en las últimas tecnologías y metodologías para ofrecer
-              las mejores soluciones a mis clientes.
+              {t('continuousUpdateDescription')}
             </p>
           </Card>
         </div>
