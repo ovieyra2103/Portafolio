@@ -110,11 +110,35 @@ const About = () => {
                 
                 <div className="border-l-2 border-primary pl-4 py-2">
                   <div className="flex justify-between items-start mb-1">
-                    <h4 className="font-medium text-primary">Desarrollo de Negocios</h4>
-                    <span className="text-xs text-muted-foreground">2021 - 2022</span>
+                    <h4 className="font-medium text-primary">Business Development & Functional Consultant</h4>
+                    <span className="text-xs text-muted-foreground">2020 - 2022</span>
                   </div>
-                  <p className="text-sm font-medium mb-1">Focaltec / GastosdeViaje.Mx</p>
-                  <p className="text-sm text-muted-foreground">Responsable de estrategias de crecimiento y expansión. Desarrollo e implementación de planes de marketing digital y gestión de relaciones con clientes.</p>
+                  <p className="text-sm font-medium mb-1">Focaltec - GastosdeViaje.Mx / PortalDeProveedores.Mx</p>
+                  <p className="text-sm text-muted-foreground mb-2">📍 Mexico City (Remote and On-site)</p>
+                  <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                    <li>Presented product demos and onboarding sessions for clients in finance and procurement roles</li>
+                    <li>Conducted requirement analysis to adapt solutions to clients' workflows</li>
+                    <li>Managed post-implementation support and client satisfaction follow-ups</li>
+                    <li>Collaborated with technical teams to automate accounting operations and integrate ERP systems</li>
+                    <li>Supported digital invoicing (CFDI), tax compliance, and electronic payment modules</li>
+                  </ul>
+                </div>
+                
+                <div className="border-l-2 border-primary pl-4 py-2">
+                  <div className="flex justify-between items-start mb-1">
+                    <h4 className="font-medium text-primary">User Support Specialist</h4>
+                    <span className="text-xs text-muted-foreground">2017 - 2019</span>
+                  </div>
+                  <p className="text-sm font-medium mb-1">Focaltec - GastosdeViaje.Mx / PortalDeProveedores.Mx</p>
+                  <p className="text-sm text-muted-foreground mb-2">📍 Mexico City (Remote and On-site)</p>
+                  <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
+                    <li>Provided first- and second-level technical support for expense and accounting platforms</li>
+                    <li>Assisted clients through tickets, phone calls, and live screen-sharing sessions</li>
+                    <li>Diagnosed functional issues and offered clear solutions, escalating technical bugs as necessary</li>
+                    <li>Created internal documentation: user guides, FAQs, help articles</li>
+                    <li>Delivered personalized training to new users, focusing on accounting features and use cases</li>
+                    <li>Explained financial processes and tax compliance logic to non-accountant users</li>
+                  </ul>
                 </div>
               </div>
               
