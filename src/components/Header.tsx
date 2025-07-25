@@ -45,7 +45,7 @@ const Header = () => {
         <div className="flex justify-between items-center">
           <a href="#home" className="flex items-center">
             <img 
-              src="/lovable-uploads/792bf737-0c30-4f05-91a2-e0ee93a5273f.png" 
+              src="/lovable-uploads/12d6bab4-a3a4-4cfe-a107-50f628de8a0c.png" 
               alt="Omar Vieyra Logo" 
               className="h-10 w-auto"
             />
