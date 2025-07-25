@@ -43,8 +43,12 @@ const Header = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <a href="#home" className="text-2xl font-bold text-primary">
-            Omar<span className="text-foreground">Vieyra</span>
+          <a href="#home" className="flex items-center">
+            <img 
+              src="/lovable-uploads/792bf737-0c30-4f05-91a2-e0ee93a5273f.png" 
+              alt="Omar Vieyra Logo" 
+              className="h-10 w-auto"
+            />
           </a>
 
           {/* Desktop Menu */}
