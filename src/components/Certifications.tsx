@@ -9,36 +9,36 @@ const Certifications = () => {
   const certifications = [
     {
       id: 1,
-      title: "Zoho Inventory, Zoho Books y Zoho Expenses",
-      description: "Implementación y uso",
+      title: t('cert1Title'),
+      description: t('cert1Description'),
       icon: "zoho",
       date: "2022"
     },
     {
       id: 2,
-      title: "Google Colab para automatización",
-      description: "Automatización de procesos y análisis de datos",
+      title: t('cert2Title'),
+      description: t('cert2Description'),
       icon: "google",
       date: "2021"
     },
     {
       id: 3,
-      title: "Certificación en GlobalGap y Primus",
-      description: "Empaque de limón y exportación",
+      title: t('cert3Title'),
+      description: t('cert3Description'),
       icon: "certificate",
       date: "2020"
     },
     {
       id: 4,
-      title: "Marketing Digital y Automatización de Ventas con IA",
-      description: "Estrategias avanzadas de marketing con inteligencia artificial",
+      title: t('cert4Title'),
+      description: t('cert4Description'),
       icon: "marketing",
       date: "2023"
     },
     {
       id: 5,
-      title: "Capacitación en Power BI y Microsoft Fabric",
-      description: "Análisis de datos y visualización",
+      title: t('cert5Title'),
+      description: t('cert5Description'),
       icon: "microsoft",
       date: "2023"
     }
