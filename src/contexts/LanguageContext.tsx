@@ -208,26 +208,43 @@ const translations = {
     continuousUpdateDescription: 'I constantly stay updated on the latest technologies and methodologies to offer the best solutions to my clients.',
     
     // Skills
-    skills: ['Zoho Inventory', 'Zoho Books', 'Zoho Expenses', 'Google Colab', 'Power BI', 'Microsoft Fabric', 'GlobalGap', 'Primus', 'Automation', 'Route Optimization', 'Travel Expense Management', 'AI Marketing', 'Consulting'],
+    skills: ['SAP Business One', 'Zoho', 'Odoo', 'QuickBooks', 'Power BI', 'Tableau', 'Google Data Studio', 'MySQL', 'Advanced Excel', 'Google Ads', 'Meta Ads', 'SEO/SEM', 'Mailchimp', 'Salesforce', 'HubSpot', 'Zapier', 'HTML', 'Microsoft 365', 'Customer Service', 'Process Optimization', 'Data Analysis', 'Bilingual Communication'],
     
     // Experience
-    businessDevelopmentSpecialist: 'Business Development Specialist',
+    commercialOperationsCoordinator: 'Commercial Operations and Finance Coordinator',
+    digitalTransformationConsultant: 'Reengineering and Digital Transformation Consultant',
+    marketingDataAnalyst: 'Marketing Data Analyst',
+    businessDevelopmentManager: 'Business Development Manager',
+    supportSpecialist: 'Support Specialist',
+    supervisor: 'Supervisor',
+    expansionStrategyDeveloper: 'Expansion Strategy Developer',
+    purchasingManager: 'Purchasing Manager',
+    mainTeller: 'Main Teller',
+    electricalAssemblyCoach: 'Electrical Assembly Coach',
     presentTime: 'Present',
-    founderAndConsultant: 'Founder and Principal Consultant',
-    processCoordinator: 'Process and Export Coordinator',
-    businessConsultant: 'Business Development & Functional Consultant',
-    userSupportSpecialist: 'User Support Specialist',
     
     // Companies
-    hieloPolar: 'Hielo Polar del Centro',
-    aiNexus: 'AI Nexus',
-    lemonPacking: 'Lemon Packing',
-    focaltec: 'Focaltec - GastosdeViaje.Mx / PortalDeProveedores.Mx',
+    hieloPolarStage2: 'Hielo Polar del Centro (Stage 2)',
+    jbmLimones: 'JBM LIMONES SPR DE RL DE CV',
+    operadoraPurepecha: 'Operadora de servicios turísticos gastronómicos e industriales Purépecha SA de CV',
+    focaltecSapi: 'Focaltec SAPI de CV',
+    oportun: 'Oportun',
+    hieloPolarExpansion: 'Hielo Polar del Centro',
+    importadoraCableCell: 'Importadora Cable-Cell',
+    scotiaBank: 'Scotia Bank Inverlat',
+    bombardier: 'Bombardier Aerospace México',
     
     // Experience descriptions
-    exp1Description: 'Leading digital transformation initiatives and systems implementation to optimize operations. Developing marketing strategies and automating administrative processes.',
-    exp2Description: 'Providing consulting services in technology, automation and intelligent marketing for small and medium enterprises. Implementation of AI-based solutions.',
-    exp3Description: 'Management and optimization of logistics and export processes. Implementation of tracking and quality control systems.',
+    hieloPolarStage2Description: 'Operations & Finance Coordinator with a focus on process improvement and user adoption. Optimized logistics routes and costs, leading to increased efficiency and supporting operational teams through change.',
+    jbmLimonesDescription: 'Digital Transformation Consultant, specializing in process optimization and technology implementation with a strong user-centric approach. Redesigned and optimized operational processes, significantly increasing efficiency and reducing costs.',
+    operadoraPurepechaDescription: 'Marketing Data Analyst, responsible for managing and analyzing marketing data. Leveraged AI tools to provide valuable insights into customer behavior and market trends.',
+    focaltecManagerDescription: 'Conducted system demonstrations and gathered detailed requirements for new client implementations. Developed compelling commercial proposals and managed post-sales follow-up to ensure client satisfaction.',
+    focaltecSupportDescription: 'Provided direct technical support to users for products including gastosdeviaje.mx and portaldeproveedores.mx, resolving and classifying tickets (Tier 1 and Tier 2) following ITIL principles.',
+    oportunDescription: 'Bilingual Customer Support Supervisor (CCPOC), providing direct customer service and managing transaction follow-ups for a US-based company.',
+    expansionDescription: 'Expansion Strategy Developer, creating detailed expansion strategies and supervising their implementation.',
+    purchasingDescription: 'Purchasing Manager & Client Relationship Specialist, managing the import process for cell phone accessories.',
+    bankTellerDescription: 'Customer Service & Operations Specialist, responsible for comprehensive customer service, vault management, and teller reconciliation.',
+    bombardierDescription: 'Electrical Assembly Coach, managing and guiding a team responsible for the assembly of aerospace harnesses.',
     
     // Focaltec experience details
     focaltecLocation: '📍 Mexico City (Remote and On-site)',

@@ -83,57 +83,92 @@ const About = () => {
               <div className="space-y-6">
                 <div className="border-l-2 border-primary pl-4 py-2">
                   <div className="flex justify-between items-start mb-1">
-                    <h4 className="font-medium text-primary">{t('businessDevelopmentSpecialist')}</h4>
-                    <span className="text-xs text-muted-foreground">2023 - {t('presentTime')}</span>
+                    <h4 className="font-medium text-primary">{t('commercialOperationsCoordinator')}</h4>
+                    <span className="text-xs text-muted-foreground">Feb 2024 - {t('presentTime')}</span>
                   </div>
-                  <p className="text-sm font-medium mb-1">{t('hieloPolar')}</p>
-                  <p className="text-sm text-muted-foreground">{t('exp1Description')}</p>
+                  <p className="text-sm font-medium mb-1">{t('hieloPolarStage2')}</p>
+                  <p className="text-sm text-muted-foreground">{t('hieloPolarStage2Description')}</p>
                 </div>
                 
                 <div className="border-l-2 border-primary pl-4 py-2">
                   <div className="flex justify-between items-start mb-1">
-                    <h4 className="font-medium text-primary">{t('founderAndConsultant')}</h4>
-                    <span className="text-xs text-muted-foreground">2024 - {t('presentTime')}</span>
+                    <h4 className="font-medium text-primary">{t('digitalTransformationConsultant')}</h4>
+                    <span className="text-xs text-muted-foreground">Nov 2022 - Oct 2023</span>
                   </div>
-                  <p className="text-sm font-medium mb-1">{t('aiNexus')}</p>
-                  <p className="text-sm text-muted-foreground">{t('exp2Description')}</p>
+                  <p className="text-sm font-medium mb-1">{t('jbmLimones')}</p>
+                  <p className="text-sm text-muted-foreground">{t('jbmLimonesDescription')}</p>
                 </div>
                 
                 <div className="border-l-2 border-primary pl-4 py-2">
                   <div className="flex justify-between items-start mb-1">
-                    <h4 className="font-medium text-primary">{t('processCoordinator')}</h4>
-                    <span className="text-xs text-muted-foreground">2022 - 2023</span>
+                    <h4 className="font-medium text-primary">{t('marketingDataAnalyst')}</h4>
+                    <span className="text-xs text-muted-foreground">Feb 2022 - Nov 2022</span>
                   </div>
-                  <p className="text-sm font-medium mb-1">{t('lemonPacking')}</p>
-                  <p className="text-sm text-muted-foreground">{t('exp3Description')}</p>
+                  <p className="text-sm font-medium mb-1">{t('operadoraPurepecha')}</p>
+                  <p className="text-sm text-muted-foreground">{t('operadoraPurepechaDescription')}</p>
                 </div>
                 
                 <div className="border-l-2 border-primary pl-4 py-2">
                   <div className="flex justify-between items-start mb-1">
-                    <h4 className="font-medium text-primary">{t('businessConsultant')}</h4>
-                    <span className="text-xs text-muted-foreground">2020 - 2022</span>
+                    <h4 className="font-medium text-primary">{t('businessDevelopmentManager')}</h4>
+                    <span className="text-xs text-muted-foreground">Apr 2019 - Apr 2021</span>
                   </div>
-                  <p className="text-sm font-medium mb-1">{t('focaltec')}</p>
-                  <p className="text-sm text-muted-foreground mb-2">{t('focaltecLocation')}</p>
-                  <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-                    {tArray('focaltecConsultantTasks').map((task, index) => (
-                      <li key={index}>{task}</li>
-                    ))}
-                  </ul>
+                  <p className="text-sm font-medium mb-1">{t('focaltecSapi')}</p>
+                  <p className="text-sm text-muted-foreground">{t('focaltecManagerDescription')}</p>
                 </div>
                 
                 <div className="border-l-2 border-primary pl-4 py-2">
                   <div className="flex justify-between items-start mb-1">
-                    <h4 className="font-medium text-primary">{t('userSupportSpecialist')}</h4>
-                    <span className="text-xs text-muted-foreground">2017 - 2019</span>
+                    <h4 className="font-medium text-primary">{t('supportSpecialist')}</h4>
+                    <span className="text-xs text-muted-foreground">Jun 2017 - Apr 2019</span>
                   </div>
-                  <p className="text-sm font-medium mb-1">{t('focaltec')}</p>
-                  <p className="text-sm text-muted-foreground mb-2">{t('focaltecLocation')}</p>
-                  <ul className="text-sm text-muted-foreground space-y-1 list-disc list-inside">
-                    {tArray('focaltecSupportTasks').map((task, index) => (
-                      <li key={index}>{task}</li>
-                    ))}
-                  </ul>
+                  <p className="text-sm font-medium mb-1">{t('focaltecSapi')}</p>
+                  <p className="text-sm text-muted-foreground">{t('focaltecSupportDescription')}</p>
+                </div>
+                
+                <div className="border-l-2 border-primary pl-4 py-2">
+                  <div className="flex justify-between items-start mb-1">
+                    <h4 className="font-medium text-primary">{t('supervisor')}</h4>
+                    <span className="text-xs text-muted-foreground">Jun 2016 - Aug 2016</span>
+                  </div>
+                  <p className="text-sm font-medium mb-1">{t('oportun')}</p>
+                  <p className="text-sm text-muted-foreground">{t('oportunDescription')}</p>
+                </div>
+                
+                <div className="border-l-2 border-primary pl-4 py-2">
+                  <div className="flex justify-between items-start mb-1">
+                    <h4 className="font-medium text-primary">{t('expansionStrategyDeveloper')}</h4>
+                    <span className="text-xs text-muted-foreground">Apr 2015 - Aug 2015</span>
+                  </div>
+                  <p className="text-sm font-medium mb-1">{t('hieloPolarExpansion')}</p>
+                  <p className="text-sm text-muted-foreground">{t('expansionDescription')}</p>
+                </div>
+                
+                <div className="border-l-2 border-primary pl-4 py-2">
+                  <div className="flex justify-between items-start mb-1">
+                    <h4 className="font-medium text-primary">{t('purchasingManager')}</h4>
+                    <span className="text-xs text-muted-foreground">Jun 2010 - Mar 2015</span>
+                  </div>
+                  <p className="text-sm font-medium mb-1">{t('importadoraCableCell')}</p>
+                  <p className="text-sm text-muted-foreground">{t('purchasingDescription')}</p>
+                </div>
+                
+                <div className="border-l-2 border-primary pl-4 py-2">
+                  <div className="flex justify-between items-start mb-1">
+                    <h4 className="font-medium text-primary">{t('mainTeller')}</h4>
+                    <span className="text-xs text-muted-foreground">Sep 2008 - Apr 2010</span>
+                  </div>
+                  <p className="text-sm font-medium mb-1">{t('scotiaBank')}</p>
+                  <p className="text-sm text-muted-foreground">{t('bankTellerDescription')}</p>
+                </div>
+                
+                <div className="border-l-2 border-primary pl-4 py-2">
+                  <div className="flex justify-between items-start mb-1">
+                    <h4 className="font-medium text-primary">{t('electricalAssemblyCoach')}</h4>
+                    <span className="text-xs text-muted-foreground">Jun 2007 - Feb 2008</span>
+                  </div>
+                  <p className="text-sm font-medium mb-1">{t('bombardier')}</p>
+                  <p className="text-sm text-muted-foreground">{t('bombardierDescription')}</p>
                 </div>
               </div>
               

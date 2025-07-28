@@ -5,25 +5,21 @@ import QRCode from 'qrcode';
 interface CVData {
   name: string;
   title: string;
-  description: string;
-  location: string;
+  profile: string;
   contact: {
     email: string;
     phone: string;
-    linkedin: string;
+    location: string;
     website: string;
   };
   experience: Array<{
+    title: string;
     company: string;
-    position: string;
     period: string;
     description: string;
   }>;
   skills: string[];
-  services: Array<{
-    title: string;
-    description: string;
-  }>;
+  services: string[];
 }
 
 export const generateInteractivePDF = async (cvData: CVData): Promise<void> => {
@@ -81,7 +77,7 @@ export const generateInteractivePDF = async (cvData: CVData): Promise<void> => {
     `📧 ${cvData.contact.email}`,
     `📱 ${cvData.contact.phone}`,
     `🌐 ${cvData.contact.website}`,
-    `📍 ${cvData.location}`
+    `📍 ${cvData.contact.location}`
   ];
   
   contactInfo.forEach((info, index) => {
@@ -101,7 +97,7 @@ export const generateInteractivePDF = async (cvData: CVData): Promise<void> => {
   pdf.setFont('helvetica', 'normal');
   pdf.setTextColor(34, 34, 34);
   
-  const descriptionLines = pdf.splitTextToSize(cvData.description, pageWidth - 40);
+  const descriptionLines = pdf.splitTextToSize(cvData.profile, pageWidth - 40);
   descriptionLines.forEach((line: string, index: number) => {
     pdf.text(line, 20, currentY + (index * 5));
   });
@@ -125,12 +121,12 @@ export const generateInteractivePDF = async (cvData: CVData): Promise<void> => {
     pdf.setFontSize(11);
     pdf.setFont('helvetica', 'bold');
     pdf.setTextColor(34, 34, 34);
-    pdf.text(exp.company, 20, currentY);
+    pdf.text(exp.title, 20, currentY);
     
     pdf.setFontSize(10);
     pdf.setFont('helvetica', 'normal');
     pdf.setTextColor(102, 102, 102);
-    pdf.text(exp.position, 20, currentY + 5);
+    pdf.text(`${exp.company} | ${exp.period}`, 20, currentY + 5);
     
     currentY += 12;
     
@@ -196,53 +192,86 @@ export const generateInteractivePDF = async (cvData: CVData): Promise<void> => {
 };
 
 export const getCVData = (): CVData => ({
-  name: 'Omar Vieyra',
-  title: 'Estratega en Transformación Digital con enfoque en Finanzas, Innovación Comercial y Automatización Inteligente',
-  description: 'Aplico inteligencia artificial y herramientas digitales para optimizar procesos, mejorar la rentabilidad y acelerar el crecimiento de negocios. Mi enfoque combina análisis financiero, visión de mercado y soluciones tecnológicas para transformar la operación de empresas en resultados medibles.',
-  location: 'Acámbaro, Guanajuato, México',
+  name: 'José Omar Vieyra García',
+  title: 'Digital Transformation Strategist',
+  profile: 'Highly motivated professional with a strong background in digital marketing, business development, and digital transformation. I bring proven experience in administrative and accounting support, customer service, and process optimization, with a keen interest in integrating technology to enhance operational efficiency and user satisfaction. My advanced English proficiency and solid grasp of accounting principles, coupled with expertise in ERPs and data analysis, enable me to diagnose issues, provide clear solutions, and ensure an excellent user experience in dynamic environments.',
   contact: {
-    email: 'omar.vieyra@example.com',
-    phone: '+52 123 456 7890',
-    linkedin: 'linkedin.com/in/omar-vieyra',
-    website: 'omar-vieyra-portfolio.com'
+    email: 'joseomarvieyra@gmail.com',
+    phone: '+52-417-130-8050',
+    location: 'Acámbaro, Guanajuato, Mexico',
+    website: 'https://omar-vieyra.com'
   },
   experience: [
     {
+      title: 'Commercial Operations and Finance Coordinator',
+      company: 'Hielo Polar del Centro (Stage 2)',
+      period: 'February 2024 – Present',
+      description: 'Operations & Finance Coordinator with a focus on process improvement and user adoption. Optimized logistics routes and costs, leading to increased efficiency and supporting operational teams through change. Developed comprehensive sales, compensation, and digital marketing strategies, often involving training and guiding internal users on new tools.'
+    },
+    {
+      title: 'Reengineering and Digital Transformation Consultant',
+      company: 'JBM LIMONES SPR DE RL DE CV',
+      period: 'November 2022 – October 2023',
+      description: 'Digital Transformation Consultant, specializing in process optimization and technology implementation with a strong user-centric approach. Redesigned and optimized operational processes, significantly increasing efficiency and reducing costs, often involving stakeholder engagement and user training.'
+    },
+    {
+      title: 'Marketing Data Analyst',
+      company: 'Operadora de servicios turísticos gastronómicos e industriales Purépecha SA de CV',
+      period: 'February 2022 – November 2022',
+      description: 'Marketing Data Analyst, responsible for managing and analyzing marketing data. Leveraged AI tools to provide valuable insights into customer behavior and market trends, supporting business decisions and internal teams with data interpretation.'
+    },
+    {
+      title: 'Business Development Manager',
+      company: 'Focaltec SAPI de CV',
+      period: 'April 2019 – April 2021',
+      description: 'Conducted system demonstrations and gathered detailed requirements for new client implementations. Developed compelling commercial proposals and managed post-sales follow-up to ensure client satisfaction.'
+    },
+    {
+      title: 'Support Specialist',
+      company: 'Focaltec SAPI de CV',
+      period: 'June 2017 – April 2019',
+      description: 'Provided direct technical support to users for products including gastosdeviaje.mx and portaldeproveedores.mx, resolving and classifying tickets (Tier 1 and Tier 2) following ITIL principles. Identified recurring issues and collaborated with the Product Owner to implement solutions in subsequent sprints.'
+    },
+    {
+      title: 'Supervisor',
+      company: 'Oportun',
+      period: 'June 2016 – August 2016',
+      description: 'Bilingual Customer Support Supervisor (CCPOC), providing direct customer service and managing transaction follow-ups for a US-based company. Ensured accurate information capture and problem resolution for client inquiries.'
+    },
+    {
+      title: 'Expansion Strategy Developer',
       company: 'Hielo Polar del Centro',
-      position: 'Especialista en Inteligencia Financiera, Desarrollo de Negocios e Innovación Operativa con IA',
-      period: '2023 - Presente',
-      description: 'Liderazgo en proyectos de transformación digital, implementación de soluciones de IA para optimización de procesos financieros y operativos.'
+      period: 'April 2015 – August 2015',
+      description: 'Expansion Strategy Developer, creating detailed expansion strategies and supervising their implementation. Collaborated closely with internal teams to align expansion plans with overall business objectives.'
     },
     {
-      company: 'Focaltec (GastosdeViaje.Mx)',
-      position: 'Consultor en Herramientas Tecnológicas',
-      period: '2022 - 2023',
-      description: 'Consultoría especializada en implementación de herramientas tecnológicas para gestión de gastos de viaje y optimización de procesos empresariales.'
+      title: 'Purchasing Manager',
+      company: 'Importadora Cable-Cell',
+      period: 'June 2010 – March 2015',
+      description: 'Purchasing Manager & Client Relationship Specialist, managing the import process for cell phone accessories. Successfully expanded the company\'s client portfolio and ensured timely follow-up on orders.'
     },
     {
-      company: 'Empaque de Limón',
-      position: 'Especialista en Automatización y Certificaciones',
-      period: '2021 - 2022',
-      description: 'Automatización de procesos de exportación y obtención de certificaciones GlobalGap y Primus, mejorando la eficiencia operativa.'
+      title: 'Main Teller',
+      company: 'Scotia Bank Inverlat',
+      period: 'September 2008 – April 2010',
+      description: 'Customer Service & Operations Specialist, responsible for comprehensive customer service, vault management, and teller reconciliation. Provided direct assistance to clients regarding account inquiries and access media.'
+    },
+    {
+      title: 'Electrical Assembly Coach',
+      company: 'Bombardier Aerospace México',
+      period: 'June 2007 – February 2008',
+      description: 'Electrical Assembly Coach, managing and guiding a team responsible for the assembly of aerospace harnesses. Provided technical guidance and support to team members, primarily for Global Express aircraft.'
     }
   ],
   skills: [
-    'Zoho Inventory', 'Zoho Books', 'Zoho Expenses', 'Google Colab', 'Power BI', 
-    'Microsoft Fabric', 'GlobalGap', 'Primus', 'Automatización', 'Optimización de Rutas',
-    'Gestión de Viáticos', 'Marketing con IA', 'Consultoría'
+    'SAP Business One', 'Zoho', 'Odoo', 'QuickBooks', 'Electronic Invoicing', 'Power BI', 'Tableau', 
+    'Google Data Studio', 'MySQL', 'Advanced Excel', 'Google Ads', 'Meta Ads', 'SEO/SEM', 
+    'Mailchimp', 'Salesforce', 'HubSpot', 'Zapier', 'HTML', 'Microsoft 365', 'Customer Service', 
+    'Process Optimization', 'Data Analysis', 'Bilingual Communication', 'ITIL', 'Project Management'
   ],
   services: [
-    {
-      title: 'Optimización Financiera y de Procesos',
-      description: 'Análisis de costos, control de gastos, automatización contable y estrategias para mejorar la rentabilidad del negocio.'
-    },
-    {
-      title: 'Marketing Estratégico y Digital',
-      description: 'Diseño de campañas inteligentes, posicionamiento de marca y uso de herramientas de IA para generar contenido y captar clientes.'
-    },
-    {
-      title: 'Transformación Digital con IA',
-      description: 'Implementación de soluciones tecnológicas personalizadas para automatizar tareas repetitivas, mejorar flujos de trabajo y escalar operaciones.'
-    }
+    'Financial and Process Optimization',
+    'Strategic and Digital Marketing',
+    'Digital Transformation with AI'
   ]
 });
