@@ -27,157 +27,218 @@ export const generateInteractivePDF = async (cvData: CVData): Promise<void> => {
   const pageWidth = pdf.internal.pageSize.getWidth();
   const pageHeight = pdf.internal.pageSize.getHeight();
   
-  // Colores del tema (basados en tu CSS)
-  const primaryColor = '#0099cc';
-  const secondaryColor = '#f0fdff';
-  const textColor = '#222222';
-  const mutedColor = '#666666';
+  // Professional color palette
+  const colors = {
+    primary: [47, 79, 79] as [number, number, number],
+    secondary: [70, 130, 180] as [number, number, number],
+    accent: [255, 140, 0] as [number, number, number],
+    text: [33, 33, 33] as [number, number, number],
+    lightText: [85, 85, 85] as [number, number, number],
+    background: [248, 250, 252] as [number, number, number],
+    white: [255, 255, 255] as [number, number, number]
+  };
   
-  let currentY = 20;
+  let currentY = 0;
   
-  // Header con gradiente simulado
-  pdf.setFillColor(0, 153, 204); // Primary color
-  pdf.rect(0, 0, pageWidth, 60, 'F');
+  // Modern header with gradient effect
+  pdf.setFillColor(...colors.primary);
+  pdf.rect(0, 0, pageWidth, 65, 'F');
   
-  // Nombre
-  pdf.setTextColor(255, 255, 255);
-  pdf.setFontSize(28);
+  // Add subtle accent line
+  pdf.setFillColor(...colors.accent);
+  pdf.rect(0, 65, pageWidth, 2, 'F');
+  
+  // Name with better typography
+  pdf.setTextColor(...colors.white);
+  pdf.setFontSize(32);
   pdf.setFont('helvetica', 'bold');
-  pdf.text(cvData.name, 20, 30);
+  pdf.text(cvData.name.toUpperCase(), 25, 35);
   
-  // Título profesional
-  pdf.setFontSize(14);
+  // Professional title with improved spacing
+  pdf.setFontSize(16);
   pdf.setFont('helvetica', 'normal');
-  pdf.text(cvData.title, 20, 40);
+  pdf.text(cvData.title, 25, 50);
   
-  // Generar QR Code
+  // Enhanced QR Code
   try {
     const qrData = `MECARD:N:${cvData.name};EMAIL:${cvData.contact.email};URL:${cvData.contact.website};;`;
     const qrCodeDataURL = await QRCode.toDataURL(qrData, {
-      width: 60,
-      margin: 0,
+      width: 80,
+      margin: 1,
       color: {
-        dark: '#000000',
+        dark: '#2F4F4F',
         light: '#FFFFFF'
       }
     });
-    pdf.addImage(qrCodeDataURL, 'PNG', pageWidth - 80, 15, 30, 30);
+    
+    // QR code background
+    pdf.setFillColor(...colors.white);
+    pdf.roundedRect(pageWidth - 75, 12, 40, 40, 3, 3, 'F');
+    pdf.addImage(qrCodeDataURL, 'PNG', pageWidth - 72, 15, 34, 34);
   } catch (error) {
     console.error('Error generating QR code:', error);
   }
   
-  currentY = 70;
+  currentY = 80;
   
-  // Información de contacto
-  pdf.setTextColor(34, 34, 34);
-  pdf.setFontSize(10);
+  // Professional contact section with icons
+  pdf.setFillColor(...colors.background);
+  pdf.rect(0, currentY, pageWidth, 25, 'F');
+  
+  pdf.setTextColor(...colors.text);
+  pdf.setFontSize(9);
   pdf.setFont('helvetica', 'normal');
   
-  const contactInfo = [
-    `📧 ${cvData.contact.email}`,
-    `📱 ${cvData.contact.phone}`,
-    `🌐 ${cvData.contact.website}`,
-    `📍 ${cvData.contact.location}`
+  const contactData = [
+    { icon: '✉', text: cvData.contact.email, x: 25 },
+    { icon: '📱', text: cvData.contact.phone, x: 25 },
+    { icon: '🌐', text: cvData.contact.website.replace('https://', ''), x: 25 },
+    { icon: '📍', text: cvData.contact.location, x: 25 }
   ];
   
-  contactInfo.forEach((info, index) => {
-    pdf.text(info, 20, currentY + (index * 5));
+  contactData.forEach((item, index) => {
+    const yPos = currentY + 8 + (index * 4);
+    pdf.setTextColor(...colors.secondary);
+    pdf.text(item.icon, item.x - 8, yPos);
+    pdf.setTextColor(...colors.text);
+    pdf.text(item.text, item.x, yPos);
   });
   
-  currentY += 30;
+  currentY += 35;
   
-  // Descripción profesional
-  pdf.setFontSize(12);
-  pdf.setFont('helvetica', 'bold');
-  pdf.setTextColor(0, 153, 204);
-  pdf.text('PERFIL PROFESIONAL', 20, currentY);
-  
-  currentY += 8;
-  pdf.setFontSize(10);
-  pdf.setFont('helvetica', 'normal');
-  pdf.setTextColor(34, 34, 34);
-  
-  const descriptionLines = pdf.splitTextToSize(cvData.profile, pageWidth - 40);
-  descriptionLines.forEach((line: string, index: number) => {
-    pdf.text(line, 20, currentY + (index * 5));
-  });
-  
-  currentY += descriptionLines.length * 5 + 10;
-  
-  // Experiencia profesional
-  pdf.setFontSize(12);
-  pdf.setFont('helvetica', 'bold');
-  pdf.setTextColor(0, 153, 204);
-  pdf.text('EXPERIENCIA PROFESIONAL', 20, currentY);
-  
-  currentY += 10;
-  
-  cvData.experience.forEach((exp) => {
-    if (currentY > pageHeight - 40) {
-      pdf.addPage();
-      currentY = 20;
-    }
+  // Professional Profile Section
+  const addSectionHeader = (title: string) => {
+    pdf.setFillColor(...colors.secondary);
+    pdf.rect(20, currentY - 3, pageWidth - 40, 12, 'F');
     
+    pdf.setTextColor(...colors.white);
     pdf.setFontSize(11);
     pdf.setFont('helvetica', 'bold');
-    pdf.setTextColor(34, 34, 34);
-    pdf.text(exp.title, 20, currentY);
-    
-    pdf.setFontSize(10);
-    pdf.setFont('helvetica', 'normal');
-    pdf.setTextColor(102, 102, 102);
-    pdf.text(`${exp.company} | ${exp.period}`, 20, currentY + 5);
-    
-    currentY += 12;
-    
-    const expLines = pdf.splitTextToSize(exp.description, pageWidth - 40);
-    expLines.forEach((line: string, index: number) => {
-      pdf.text(line, 20, currentY + (index * 4));
-    });
-    
-    currentY += expLines.length * 4 + 8;
+    pdf.text(title, 25, currentY + 4);
+    currentY += 15;
+  };
+  
+  addSectionHeader('PROFESSIONAL PROFILE');
+  
+  pdf.setFontSize(10);
+  pdf.setFont('helvetica', 'normal');
+  pdf.setTextColor(...colors.text);
+  
+  const descriptionLines = pdf.splitTextToSize(cvData.profile, pageWidth - 50);
+  descriptionLines.forEach((line: string, index: number) => {
+    pdf.text(line, 25, currentY + (index * 5));
   });
   
-  // Habilidades
-  if (currentY > pageHeight - 60) {
-    pdf.addPage();
-    currentY = 20;
-  }
+  currentY += descriptionLines.length * 5 + 15;
   
-  pdf.setFontSize(12);
-  pdf.setFont('helvetica', 'bold');
-  pdf.setTextColor(0, 153, 204);
-  pdf.text('HABILIDADES', 20, currentY);
+  // Professional Experience Section
+  addSectionHeader('PROFESSIONAL EXPERIENCE');
   
-  currentY += 10;
-  
-  // Mostrar habilidades en formato de badges
-  let skillX = 20;
-  let skillY = currentY;
-  
-  cvData.skills.forEach((skill) => {
-    const skillWidth = pdf.getTextWidth(skill) + 8;
-    
-    if (skillX + skillWidth > pageWidth - 20) {
-      skillX = 20;
-      skillY += 8;
+  cvData.experience.forEach((exp, index) => {
+    if (currentY > pageHeight - 50) {
+      pdf.addPage();
+      currentY = 25;
     }
     
-    // Simular badge con rectángulo redondeado
-    pdf.setFillColor(240, 253, 255);
-    pdf.setDrawColor(0, 153, 204);
-    pdf.roundedRect(skillX, skillY - 4, skillWidth, 6, 1, 1, 'FD');
+    // Experience entry with improved layout
+    if (index > 0) {
+      // Add subtle separator
+      pdf.setDrawColor(...colors.background);
+      pdf.setLineWidth(0.5);
+      pdf.line(25, currentY - 5, pageWidth - 25, currentY - 5);
+      currentY += 5;
+    }
     
-    pdf.setFontSize(8);
-    pdf.setTextColor(0, 153, 204);
-    pdf.text(skill, skillX + 4, skillY);
+    // Job title
+    pdf.setFontSize(12);
+    pdf.setFont('helvetica', 'bold');
+    pdf.setTextColor(...colors.text);
+    pdf.text(exp.title, 25, currentY);
     
-    skillX += skillWidth + 5;
+    // Company and period
+    pdf.setFontSize(10);
+    pdf.setFont('helvetica', 'normal');
+    pdf.setTextColor(...colors.lightText);
+    pdf.text(exp.company, 25, currentY + 6);
+    
+    // Period aligned to the right
+    const periodWidth = pdf.getTextWidth(exp.period);
+    pdf.setTextColor(...colors.secondary);
+    pdf.text(exp.period, pageWidth - 25 - periodWidth, currentY + 6);
+    
+    currentY += 15;
+    
+    // Description with better formatting
+    pdf.setTextColor(...colors.text);
+    pdf.setFontSize(9);
+    const expLines = pdf.splitTextToSize(exp.description, pageWidth - 55);
+    expLines.forEach((line: string, index: number) => {
+      pdf.text(line, 30, currentY + (index * 4));
+    });
+    
+    currentY += expLines.length * 4 + 12;
   });
   
-  // Agregar enlaces interactivos (solo funciona en algunos visores de PDF)
-  pdf.setTextColor(0, 153, 204);
-  pdf.textWithLink('Visita mi portafolio', 20, pageHeight - 20, { url: cvData.contact.website });
+  // Skills Section
+  if (currentY > pageHeight - 80) {
+    pdf.addPage();
+    currentY = 25;
+  }
+  
+  addSectionHeader('CORE SKILLS');
+  
+  // Modern skills layout with improved badges
+  let skillX = 25;
+  let skillY = currentY;
+  const skillPadding = 6;
+  const skillHeight = 8;
+  
+  pdf.setFontSize(8);
+  pdf.setFont('helvetica', 'normal');
+  
+  cvData.skills.forEach((skill) => {
+    const skillWidth = pdf.getTextWidth(skill) + (skillPadding * 2);
+    
+    if (skillX + skillWidth > pageWidth - 25) {
+      skillX = 25;
+      skillY += skillHeight + 4;
+    }
+    
+    // Modern skill badge with gradient effect
+    pdf.setFillColor(...colors.accent);
+    pdf.roundedRect(skillX, skillY - 4, skillWidth, skillHeight, 2, 2, 'F');
+    
+    // Add subtle border
+    pdf.setDrawColor(...colors.secondary);
+    pdf.setLineWidth(0.2);
+    pdf.roundedRect(skillX, skillY - 4, skillWidth, skillHeight, 2, 2, 'D');
+    
+    pdf.setTextColor(...colors.white);
+    pdf.text(skill, skillX + skillPadding, skillY);
+    
+    skillX += skillWidth + 4;
+  });
+  
+  // Professional footer with enhanced styling
+  currentY = pageHeight - 25;
+  
+  // Footer background
+  pdf.setFillColor(...colors.primary);
+  pdf.rect(0, currentY - 5, pageWidth, 30, 'F');
+  
+  // Portfolio link
+  pdf.setTextColor(...colors.white);
+  pdf.setFontSize(10);
+  pdf.setFont('helvetica', 'normal');
+  const footerText = 'Visit my portfolio for more details';
+  const footerWidth = pdf.getTextWidth(footerText);
+  pdf.textWithLink(footerText, (pageWidth - footerWidth) / 2, currentY + 8, { url: cvData.contact.website });
+  
+  // Generation timestamp
+  pdf.setFontSize(7);
+  pdf.setTextColor(...colors.background);
+  const timestamp = `Generated on ${new Date().toLocaleDateString()}`;
+  pdf.text(timestamp, 25, currentY + 15);
   
   // Metadatos del PDF
   pdf.setProperties({
