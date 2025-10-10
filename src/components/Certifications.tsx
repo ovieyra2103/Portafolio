@@ -4,43 +4,24 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Certifications = () => {
-  const { t } = useLanguage();
+  const { t, tArray } = useLanguage();
   
-  const certifications = [
+  const certificationCategories = [
     {
-      id: 1,
-      title: t('cert1Title'),
-      description: t('cert1Description'),
-      icon: "zoho",
-      date: "2022"
+      category: t('certCategoryDigitalTransformation'),
+      certs: tArray('certDigitalTransformation')
     },
     {
-      id: 2,
-      title: t('cert2Title'),
-      description: t('cert2Description'),
-      icon: "google",
-      date: "2021"
+      category: t('certCategoryMarketing'),
+      certs: tArray('certMarketing')
     },
     {
-      id: 3,
-      title: t('cert3Title'),
-      description: t('cert3Description'),
-      icon: "certificate",
-      date: "2020"
+      category: t('certCategoryDevelopment'),
+      certs: tArray('certDevelopment')
     },
     {
-      id: 4,
-      title: t('cert4Title'),
-      description: t('cert4Description'),
-      icon: "marketing",
-      date: "2023"
-    },
-    {
-      id: 5,
-      title: t('cert5Title'),
-      description: t('cert5Description'),
-      icon: "microsoft",
-      date: "2023"
+      category: t('certCategoryAnalytics'),
+      certs: tArray('certAnalytics')
     }
   ];
 
@@ -52,29 +33,26 @@ const Certifications = () => {
       <div className="container mx-auto px-4">
         <h2 className="section-title">{t('certificationsTitle')}</h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
-          {certifications.map((cert, index) => (
-            <Card 
-              key={cert.id} 
-              className="glass-card hover:shadow-md hover:shadow-primary/10 transition-all duration-300 animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <CardHeader className="pb-2">
-                <div className="flex justify-between items-start">
-                  <CardTitle className="text-lg">{cert.title}</CardTitle>
-                  <div className="rounded-full p-2 bg-secondary dark:bg-slate-800">
-                    <Award className="h-5 w-5 text-primary" />
-                  </div>
-                </div>
-                <CardDescription>{cert.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center text-sm text-muted-foreground mt-2">
-                  <Calendar className="mr-2 h-4 w-4" />
-                  <span>{cert.date}</span>
-                </div>
-              </CardContent>
-            </Card>
+        <div className="space-y-12 mt-12">
+          {certificationCategories.map((category, categoryIndex) => (
+            <div key={categoryIndex} className="animate-fade-in" style={{ animationDelay: `${categoryIndex * 0.15}s` }}>
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
+                <Award className="h-6 w-6 text-primary" />
+                {category.category}
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                {category.certs.map((cert, certIndex) => (
+                  <Card 
+                    key={certIndex}
+                    className="glass-card hover:shadow-md hover:shadow-primary/10 transition-all duration-300 border-l-4 border-l-primary/50"
+                  >
+                    <CardHeader className="pb-3">
+                      <CardTitle className="text-base leading-snug">{cert}</CardTitle>
+                    </CardHeader>
+                  </Card>
+                ))}
+              </div>
+            </div>
           ))}
         </div>
         

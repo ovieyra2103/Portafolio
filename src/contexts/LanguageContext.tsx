@@ -57,9 +57,37 @@ const translations = {
     sending: 'Enviando...',
     
     // Certifications
-    certificationsTitle: 'Cursos y Certificaciones',
+    certificationsTitle: 'Certificaciones y Formación Profesional',
     continuousUpdate: 'Actualización Continua',
     continuousUpdateDescription: 'Constantemente me mantengo actualizado en las últimas tecnologías y metodologías para ofrecer las mejores soluciones a mis clientes.',
+    
+    certCategoryDigitalTransformation: 'Transformación Digital y Estrategia Comercial',
+    certDigitalTransformation: [
+      'Transformación Digital para el Empleo',
+      'Digitalización Comercial - Google My Business y YouTube',
+      'Tu Negocio en Internet'
+    ],
+    
+    certCategoryMarketing: 'Marketing y Analítica Digital',
+    certMarketing: [
+      'Fundamentos de Marketing Digital (Google)',
+      'Google Analytics para Principiantes',
+      'Google Analytics Avanzado'
+    ],
+    
+    certCategoryDevelopment: 'Desarrollo Tecnológico',
+    certDevelopment: [
+      'Diplomado en Desarrollo Web y Aplicaciones Móviles (726 horas)',
+      'Certificación de Desarrollador Back-end',
+      'Certificación de Desarrollador Front-end',
+      'Certificación de Desarrollador de Aplicaciones Móviles',
+      'Programación Orientada a Objetos'
+    ],
+    
+    certCategoryAnalytics: 'Analítica Avanzada y Certificaciones Internacionales',
+    certAnalytics: [
+      'SAS Visual Business Analytics Professional Certificate (Coursera)'
+    ],
     
     // Skills
     skills: ['Zoho Inventory', 'Zoho Books', 'Zoho Expenses', 'Google Colab', 'Power BI', 'Microsoft Fabric', 'GlobalGap', 'Primus', 'Automatización', 'Optimización de Rutas', 'Gestión de Viáticos', 'Marketing con IA', 'Consultoría'],
@@ -142,18 +170,6 @@ const translations = {
     project6Description: 'Desarrollo e implementación de sistema para la gestión de producción.',
     project6DetailedDescription: 'Implementación de una web app que permite gestionar de forma ágil y precisa la producción y distribución interna en una fabrica de hielo, automatizando el flujo actual, generando datos en tiempo real.',
     
-    // Certifications data
-    cert1Title: 'Zoho Inventory, Zoho Books y Zoho Expenses',
-    cert1Description: 'Implementación y uso',
-    cert2Title: 'Google Colab para automatización',
-    cert2Description: 'Automatización de procesos y análisis de datos',
-    cert3Title: 'Certificación en GlobalGap y Primus',
-    cert3Description: 'Empaque de limón y exportación',
-    cert4Title: 'Marketing Digital y Automatización de Ventas con IA',
-    cert4Description: 'Estrategias avanzadas de marketing con inteligencia artificial',
-    cert5Title: 'Capacitación en Power BI y Microsoft Fabric',
-    cert5Description: 'Análisis de datos y visualización',
-    
     // Footer
     allRightsReserved: 'Todos los derechos reservados.',
     madeWith: 'Hecho con',
@@ -203,9 +219,37 @@ const translations = {
     sending: 'Sending...',
     
     // Certifications
-    certificationsTitle: 'Courses and Certifications',
+    certificationsTitle: 'Professional Certifications and Training',
     continuousUpdate: 'Continuous Update',
     continuousUpdateDescription: 'I constantly stay updated on the latest technologies and methodologies to offer the best solutions to my clients.',
+    
+    certCategoryDigitalTransformation: 'Digital Transformation and Commercial Strategy',
+    certDigitalTransformation: [
+      'Digital Transformation for Employment',
+      'Commercial Digitalization - Google My Business and YouTube',
+      'Your Business on the Internet'
+    ],
+    
+    certCategoryMarketing: 'Marketing and Digital Analytics',
+    certMarketing: [
+      'Fundamentals of Digital Marketing (Google)',
+      'Google Analytics for Beginners',
+      'Advanced Google Analytics'
+    ],
+    
+    certCategoryDevelopment: 'Technological Development',
+    certDevelopment: [
+      'Diploma in Web Development and Mobile Applications (726 hours)',
+      'Back-end Developer Certification',
+      'Front-end Developer Certification',
+      'Mobile Application Developer Certification',
+      'Object-Oriented Programming'
+    ],
+    
+    certCategoryAnalytics: 'Advanced Analytics and International Certifications',
+    certAnalytics: [
+      'SAS Visual Business Analytics Professional Certificate (Coursera)'
+    ],
     
     // Skills
     skills: ['SAP Business One', 'Zoho', 'Odoo', 'QuickBooks', 'Power BI', 'Tableau', 'Google Data Studio', 'MySQL', 'Advanced Excel', 'Google Ads', 'Meta Ads', 'SEO/SEM', 'Mailchimp', 'Salesforce', 'HubSpot', 'Zapier', 'HTML', 'Microsoft 365', 'Customer Service', 'Process Optimization', 'Data Analysis', 'Bilingual Communication'],
@@ -304,18 +348,6 @@ const translations = {
     project6Title: 'Custom Production Control Development',
     project6Description: 'Development and implementation of production management system.',
     project6DetailedDescription: 'Implementation of a web app that allows agile and precise management of production and internal distribution in an ice factory, automating the current workflow, generating real-time data.',
-    
-    // Certifications data
-    cert1Title: 'Zoho Inventory, Zoho Books and Zoho Expenses',
-    cert1Description: 'Implementation and usage',
-    cert2Title: 'Google Colab for Automation',
-    cert2Description: 'Process automation and data analysis',
-    cert3Title: 'GlobalGap and Primus Certification',
-    cert3Description: 'Lemon packing and export',
-    cert4Title: 'Digital Marketing and AI Sales Automation',
-    cert4Description: 'Advanced marketing strategies with artificial intelligence',
-    cert5Title: 'Power BI and Microsoft Fabric Training',
-    cert5Description: 'Data analysis and visualization',
     
     // Footer
     allRightsReserved: 'All rights reserved.',
