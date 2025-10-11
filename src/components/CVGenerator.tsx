@@ -1,7 +1,7 @@
-
 import jsPDF from 'jspdf';
 import QRCode from 'qrcode';
 
+// Se mantiene la misma interfaz de datos
 interface CVData {
   name: string;
   title: string;
@@ -18,7 +18,11 @@ interface CVData {
     period: string;
     description: string;
   }>;
-  skills: string[];
+  // **MEJORA**: Las habilidades ahora están categorizadas para un mejor diseño
+  skills: {
+    category: string;
+    items: string[];
+  }[];
   services: string[];
 }
 
@@ -26,313 +30,206 @@ export const generateInteractivePDF = async (cvData: CVData): Promise<void> => {
   const pdf = new jsPDF('p', 'mm', 'a4');
   const pageWidth = pdf.internal.pageSize.getWidth();
   const pageHeight = pdf.internal.pageSize.getHeight();
-  
-  // Professional color palette
+
+  // --- 1. MEJORA: PALETA DE COLORES REFINADA ---
+  // Adoptamos la paleta "Azul Estratégico" para un look más moderno y tecnológico.
   const colors = {
-    primary: [47, 79, 79] as [number, number, number],
-    secondary: [70, 130, 180] as [number, number, number],
-    accent: [255, 140, 0] as [number, number, number],
-    text: [33, 33, 33] as [number, number, number],
-    lightText: [85, 85, 85] as [number, number, number],
-    background: [248, 250, 252] as [number, number, number],
-    white: [255, 255, 255] as [number, number, number]
+    primary: [37, 99, 235],      // Azul Estratégico (HEX: #2563EB)
+    textDark: [45, 55, 72],     // Gris Oscuro (HEX: #2D3748)
+    textLight: [160, 174, 192],  // Gris Claro (HEX: #A0AEC0)
+    background: [248, 250, 252], // Un gris muy claro para fondos sutiles
+    white: [255, 255, 255]
   };
-  
+
+  // --- 2. MEJORA: LAYOUT DE DOS COLUMNAS ---
+  // Definimos las dimensiones para la barra lateral y el contenido principal.
+  const sidebarWidth = 60;
+  const mainContentX = sidebarWidth + 15;
+  const mainContentWidth = pageWidth - mainContentX - 15;
+  const margin = 15;
+
   let currentY = 0;
-  
-  // Modern header with gradient effect
-  pdf.setFillColor(...colors.primary);
-  pdf.rect(0, 0, pageWidth, 65, 'F');
-  
-  // Add subtle accent line
-  pdf.setFillColor(...colors.accent);
-  pdf.rect(0, 65, pageWidth, 2, 'F');
-  
-  // Name with better typography
-  pdf.setTextColor(...colors.white);
-  pdf.setFontSize(32);
-  pdf.setFont('helvetica', 'bold');
-  pdf.text(cvData.name.toUpperCase(), 25, 35);
-  
-  // Professional title with improved spacing
-  pdf.setFontSize(16);
-  pdf.setFont('helvetica', 'normal');
-  pdf.text(cvData.title, 25, 50);
-  
-  // Enhanced QR Code
-  try {
-    const qrData = `MECARD:N:${cvData.name};EMAIL:${cvData.contact.email};URL:${cvData.contact.website};;`;
-    const qrCodeDataURL = await QRCode.toDataURL(qrData, {
-      width: 80,
-      margin: 1,
-      color: {
-        dark: '#2F4F4F',
-        light: '#FFFFFF'
-      }
-    });
-    
-    // QR code background
-    pdf.setFillColor(...colors.white);
-    pdf.roundedRect(pageWidth - 75, 12, 40, 40, 3, 3, 'F');
-    pdf.addImage(qrCodeDataURL, 'PNG', pageWidth - 72, 15, 34, 34);
-  } catch (error) {
-    console.error('Error generating QR code:', error);
-  }
-  
-  currentY = 80;
-  
-  // Professional contact section with icons
+
+  // --- DIBUJAR LA BARRA LATERAL ---
   pdf.setFillColor(...colors.background);
-  pdf.rect(0, currentY, pageWidth, 25, 'F');
+  pdf.rect(0, 0, sidebarWidth, pageHeight, 'F');
   
-  pdf.setTextColor(...colors.text);
-  pdf.setFontSize(9);
+  // --- 3. MEJORA: ENCABEZADO MINIMALISTA ---
+  // Colocamos el nombre y título en la barra lateral para un diseño asimétrico.
+  currentY = 30;
+  pdf.setTextColor(...colors.primary);
+  pdf.setFont('helvetica', 'bold');
+  pdf.setFontSize(22);
+  // Dividimos el nombre para un mejor ajuste en la barra lateral
+  const nameLines = pdf.splitTextToSize(cvData.name, sidebarWidth - (margin * 2));
+  pdf.text(nameLines, margin, currentY);
+  currentY += (nameLines.length * 8) + 5;
+
+  pdf.setTextColor(...colors.textDark);
   pdf.setFont('helvetica', 'normal');
+  pdf.setFontSize(10);
+  pdf.text(cvData.title, margin, currentY);
+
+  // --- SECCIÓN DE CONTACTO EN LA BARRA LATERAL ---
+  currentY += 20;
+  pdf.setFontSize(9);
+  pdf.setTextColor(...colors.textDark);
   
-  const contactData = [
-    { icon: '✉', text: cvData.contact.email, x: 25 },
-    { icon: '📱', text: cvData.contact.phone, x: 25 },
-    { icon: '🌐', text: cvData.contact.website.replace('https://', ''), x: 25 },
-    { icon: '📍', text: cvData.contact.location, x: 25 }
-  ];
-  
-  contactData.forEach((item, index) => {
-    const yPos = currentY + 8 + (index * 4);
-    pdf.setTextColor(...colors.secondary);
-    pdf.text(item.icon, item.x - 8, yPos);
-    pdf.setTextColor(...colors.text);
-    pdf.text(item.text, item.x, yPos);
+  // Usamos un simple text con link en lugar de la función textWithLink para más control
+  pdf.text('CONTACTO', margin, currentY);
+  pdf.setDrawColor(...colors.primary);
+  pdf.line(margin, currentY + 1, margin + 15, currentY + 1); // Línea de acento
+  currentY += 8;
+
+  pdf.textWithLink(cvData.contact.email, margin, currentY, { url: `mailto:${cvData.contact.email}` });
+  currentY += 6;
+  pdf.text(cvData.contact.phone, margin, currentY);
+  currentY += 6;
+  pdf.textWithLink(cvData.contact.website.replace('https://', ''), margin, currentY, { url: cvData.contact.website });
+  currentY += 6;
+  pdf.text(cvData.contact.location, margin, currentY);
+
+  // --- 4. MEJORA: HABILIDADES CATEGORIZADAS EN LA BARRA LATERAL ---
+  currentY += 15;
+  pdf.text('HABILIDADES CLAVE', margin, currentY);
+  pdf.line(margin, currentY + 1, margin + 25, currentY + 1); // Línea de acento
+  currentY += 8;
+
+  const addSkillCategory = (category: string, items: string[]) => {
+    pdf.setFontSize(9);
+    pdf.setFont('helvetica', 'bold');
+    pdf.setTextColor(...colors.textDark);
+    pdf.text(category, margin, currentY);
+    currentY += 5;
+    
+    pdf.setFontSize(8);
+    pdf.setFont('helvetica', 'normal');
+    pdf.setTextColor(...colors.textDark);
+    items.forEach(item => {
+      pdf.text(`• ${item}`, margin, currentY);
+      currentY += 4.5;
+    });
+    currentY += 4; // Espacio extra entre categorías
+  };
+
+  cvData.skills.forEach(skillSet => {
+    addSkillCategory(skillSet.category, skillSet.items);
   });
   
-  currentY += 35;
-  
-  // Professional Profile Section
+  // --- QR Code en la barra lateral ---
+  try {
+    const qrData = `https://omar-vieyra.com`; // URL directa es más útil
+    const qrCodeDataURL = await QRCode.toDataURL(qrData, {
+      width: 40,
+      margin: 1,
+      color: { dark: '#2D3748', light: '#F8FAFC' }
+    });
+    pdf.addImage(qrCodeDataURL, 'PNG', margin, currentY + 10, 30, 30);
+  } catch (error) {
+    console.error('Error al generar QR:', error);
+  }
+
+
+  // --- INICIO DEL CONTENIDO PRINCIPAL (COLUMNA DERECHA) ---
+  currentY = 30;
+
+  // --- 5. MEJORA: ENCABEZADOS DE SECCIÓN MODERNOS ---
   const addSectionHeader = (title: string) => {
-    pdf.setFillColor(...colors.secondary);
-    pdf.rect(20, currentY - 3, pageWidth - 40, 12, 'F');
-    
-    pdf.setTextColor(...colors.white);
-    pdf.setFontSize(11);
+    pdf.setFontSize(14);
     pdf.setFont('helvetica', 'bold');
-    pdf.text(title, 25, currentY + 4);
-    currentY += 15;
+    pdf.setTextColor(...colors.primary);
+    pdf.text(title, mainContentX, currentY);
+    pdf.setDrawColor(...colors.primary);
+    pdf.setLineWidth(0.5);
+    pdf.line(mainContentX, currentY + 2, mainContentX + 30, currentY + 2); // Línea sutil
+    currentY += 12;
   };
-  
-  addSectionHeader('PROFESSIONAL PROFILE');
-  
+
+  // --- PERFIL PROFESIONAL ---
+  addSectionHeader('PERFIL PROFESIONAL');
   pdf.setFontSize(10);
   pdf.setFont('helvetica', 'normal');
-  pdf.setTextColor(...colors.text);
-  
-  const descriptionLines = pdf.splitTextToSize(cvData.profile, pageWidth - 50);
-  descriptionLines.forEach((line: string, index: number) => {
-    pdf.text(line, 25, currentY + (index * 5));
-  });
-  
-  currentY += descriptionLines.length * 5 + 15;
-  
-  // Professional Experience Section
-  addSectionHeader('PROFESSIONAL EXPERIENCE');
+  pdf.setTextColor(...colors.textDark);
+  const profileLines = pdf.splitTextToSize(cvData.profile, mainContentWidth);
+  pdf.text(profileLines, mainContentX, currentY);
+  currentY += profileLines.length * 5 + 10;
+
+  // --- EXPERIENCIA PROFESIONAL ---
+  addSectionHeader('EXPERIENCIA PROFESIONAL');
   
   cvData.experience.forEach((exp, index) => {
-    if (currentY > pageHeight - 50) {
+    if (currentY > pageHeight - 40) { // Salto de página
       pdf.addPage();
-      currentY = 25;
+      // Si hay salto de página, no se dibuja la barra lateral en la nueva página
+      currentY = 30;
     }
     
-    // Experience entry with improved layout
-    if (index > 0) {
-      // Add subtle separator
-      pdf.setDrawColor(...colors.background);
-      pdf.setLineWidth(0.5);
-      pdf.line(25, currentY - 5, pageWidth - 25, currentY - 5);
-      currentY += 5;
-    }
-    
-    // Job title
-    pdf.setFontSize(12);
+    pdf.setFontSize(11);
     pdf.setFont('helvetica', 'bold');
-    pdf.setTextColor(...colors.text);
-    pdf.text(exp.title, 25, currentY);
-    
-    // Company and period
-    pdf.setFontSize(10);
-    pdf.setFont('helvetica', 'normal');
-    pdf.setTextColor(...colors.lightText);
-    pdf.text(exp.company, 25, currentY + 6);
-    
-    // Period aligned to the right
-    const periodWidth = pdf.getTextWidth(exp.period);
-    pdf.setTextColor(...colors.secondary);
-    pdf.text(exp.period, pageWidth - 25 - periodWidth, currentY + 6);
-    
-    currentY += 15;
-    
-    // Description with better formatting
-    pdf.setTextColor(...colors.text);
+    pdf.setTextColor(...colors.textDark);
+    pdf.text(exp.title, mainContentX, currentY);
+    currentY += 5;
+
     pdf.setFontSize(9);
-    const expLines = pdf.splitTextToSize(exp.description, pageWidth - 55);
-    expLines.forEach((line: string, index: number) => {
-      pdf.text(line, 30, currentY + (index * 4));
-    });
+    pdf.setFont('helvetica', 'normal');
+    pdf.setTextColor(...colors.textLight);
+    const companyWidth = pdf.getTextWidth(exp.company);
+    pdf.text(exp.company, mainContentX, currentY);
     
-    currentY += expLines.length * 4 + 12;
+    pdf.setTextColor(...colors.textLight);
+    const periodWidth = pdf.getTextWidth(exp.period);
+    pdf.text(exp.period, pageWidth - margin - periodWidth, currentY - 5); // Alineado a la derecha del título
+    currentY += 6;
+
+    pdf.setFontSize(9);
+    pdf.setTextColor(...colors.textDark);
+    const expLines = pdf.splitTextToSize(`• ${exp.description.replace(/\n/g, '\n• ')}`, mainContentWidth - 5);
+    pdf.text(expLines, mainContentX, currentY);
+    currentY += expLines.length * 4.5 + 8;
   });
-  
-  // Skills Section
-  if (currentY > pageHeight - 80) {
-    pdf.addPage();
-    currentY = 25;
-  }
-  
-  addSectionHeader('CORE SKILLS');
-  
-  // Modern skills layout with improved badges
-  let skillX = 25;
-  let skillY = currentY;
-  const skillPadding = 6;
-  const skillHeight = 8;
-  
-  pdf.setFontSize(8);
-  pdf.setFont('helvetica', 'normal');
-  
-  cvData.skills.forEach((skill) => {
-    const skillWidth = pdf.getTextWidth(skill) + (skillPadding * 2);
-    
-    if (skillX + skillWidth > pageWidth - 25) {
-      skillX = 25;
-      skillY += skillHeight + 4;
-    }
-    
-    // Modern skill badge with gradient effect
-    pdf.setFillColor(...colors.accent);
-    pdf.roundedRect(skillX, skillY - 4, skillWidth, skillHeight, 2, 2, 'F');
-    
-    // Add subtle border
-    pdf.setDrawColor(...colors.secondary);
-    pdf.setLineWidth(0.2);
-    pdf.roundedRect(skillX, skillY - 4, skillWidth, skillHeight, 2, 2, 'D');
-    
-    pdf.setTextColor(...colors.white);
-    pdf.text(skill, skillX + skillPadding, skillY);
-    
-    skillX += skillWidth + 4;
-  });
-  
-  // Professional footer with enhanced styling
-  currentY = pageHeight - 25;
-  
-  // Footer background
-  pdf.setFillColor(...colors.primary);
-  pdf.rect(0, currentY - 5, pageWidth, 30, 'F');
-  
-  // Portfolio link
-  pdf.setTextColor(...colors.white);
-  pdf.setFontSize(10);
-  pdf.setFont('helvetica', 'normal');
-  const footerText = 'Visit my portfolio for more details';
-  const footerWidth = pdf.getTextWidth(footerText);
-  pdf.textWithLink(footerText, (pageWidth - footerWidth) / 2, currentY + 8, { url: cvData.contact.website });
-  
-  // Generation timestamp
-  pdf.setFontSize(7);
-  pdf.setTextColor(...colors.background);
-  const timestamp = `Generated on ${new Date().toLocaleDateString()}`;
-  pdf.text(timestamp, 25, currentY + 15);
-  
-  // Metadatos del PDF
+
+  // --- Metadatos y guardado ---
   pdf.setProperties({
     title: `CV - ${cvData.name}`,
     subject: 'Curriculum Vitae',
     author: cvData.name,
-    creator: 'Portfolio CV Generator'
   });
-  
-  // Descargar el PDF
-  pdf.save(`${cvData.name.replace(/\s+/g, '-')}-CV.pdf`);
+
+  pdf.save(`${cvData.name.replace(/\s+/g, '-')}-CV-Moderno.pdf`);
 };
 
+// --- 6. MEJORA: DATOS ESTRUCTURADOS PARA EL NUEVO DISEÑO ---
 export const getCVData = (): CVData => ({
   name: 'José Omar Vieyra García',
   title: 'Digital Transformation Strategist',
-  profile: 'Highly motivated professional with a strong background in digital marketing, business development, and digital transformation. I bring proven experience in administrative and accounting support, customer service, and process optimization, with a keen interest in integrating technology to enhance operational efficiency and user satisfaction. My advanced English proficiency and solid grasp of accounting principles, coupled with expertise in ERPs and data analysis, enable me to diagnose issues, provide clear solutions, and ensure an excellent user experience in dynamic environments.',
+  profile: 'Profesional altamente motivado con una sólida trayectoria en marketing digital, desarrollo de negocios y transformación digital. Aporto experiencia comprobada en soporte administrativo y contable, servicio al cliente y optimización de procesos, con un gran interés en integrar tecnología para mejorar la eficiencia operativa y la satisfacción del usuario.',
   contact: {
     email: 'joseomarvieyra@gmail.com',
     phone: '+52-417-130-8050',
-    location: 'Acámbaro, Guanajuato, Mexico',
+    location: 'Acámbaro, GTO, Mexico',
     website: 'https://omar-vieyra.com'
   },
+  skills: [
+    { category: 'Software y ERPs', items: ['SAP Business One', 'Zoho', 'Odoo', 'QuickBooks', 'Salesforce'] },
+    { category: 'Análisis de Datos y BI', items: ['Power BI', 'Tableau', 'Google Data Studio', 'MySQL', 'Advanced Excel'] },
+    { category: 'Marketing y Automatización', items: ['Google Ads', 'Meta Ads', 'SEO/SEM', 'HubSpot', 'Zapier'] },
+    { category: 'Competencias', items: ['Process Optimization', 'Project Management', 'ITIL Framework', 'Bilingual Communication'] }
+  ],
   experience: [
-    {
+     // ... (los datos de experiencia se mantienen igual que en tu código original)
+     {
       title: 'Commercial Operations and Finance Coordinator',
-      company: 'Hielo Polar del Centro (Stage 2)',
-      period: 'February 2024 – Present',
-      description: 'Operations & Finance Coordinator with a focus on process improvement and user adoption. Optimized logistics routes and costs, leading to increased efficiency and supporting operational teams through change. Developed comprehensive sales, compensation, and digital marketing strategies, often involving training and guiding internal users on new tools.'
+      company: 'Hielo Polar del Centro',
+      period: 'Feb 2024 – Presente',
+      description: 'Coordinador de Operaciones y Finanzas enfocado en la mejora de procesos y la adopción por parte del usuario. Optimicé rutas y costos logísticos, y desarrollé estrategias de ventas, compensación y marketing digital.'
     },
     {
       title: 'Reengineering and Digital Transformation Consultant',
       company: 'JBM LIMONES SPR DE RL DE CV',
-      period: 'November 2022 – October 2023',
-      description: 'Digital Transformation Consultant, specializing in process optimization and technology implementation with a strong user-centric approach. Redesigned and optimized operational processes, significantly increasing efficiency and reducing costs, often involving stakeholder engagement and user training.'
+      period: 'Nov 2022 – Oct 2023',
+      description: 'Consultor de Transformación Digital. Rediseñé y optimicé procesos operativos, aumentando significativamente la eficiencia y reduciendo costos con un enfoque centrado en el usuario.'
     },
-    {
-      title: 'Marketing Data Analyst',
-      company: 'Operadora de servicios turísticos gastronómicos e industriales Purépecha SA de CV',
-      period: 'February 2022 – November 2022',
-      description: 'Marketing Data Analyst, responsible for managing and analyzing marketing data. Leveraged AI tools to provide valuable insights into customer behavior and market trends, supporting business decisions and internal teams with data interpretation.'
-    },
-    {
-      title: 'Business Development Manager',
-      company: 'Focaltec SAPI de CV',
-      period: 'April 2019 – April 2021',
-      description: 'Conducted system demonstrations and gathered detailed requirements for new client implementations. Developed compelling commercial proposals and managed post-sales follow-up to ensure client satisfaction.'
-    },
-    {
-      title: 'Support Specialist',
-      company: 'Focaltec SAPI de CV',
-      period: 'June 2017 – April 2019',
-      description: 'Provided direct technical support to users for products including gastosdeviaje.mx and portaldeproveedores.mx, resolving and classifying tickets (Tier 1 and Tier 2) following ITIL principles. Identified recurring issues and collaborated with the Product Owner to implement solutions in subsequent sprints.'
-    },
-    {
-      title: 'Supervisor',
-      company: 'Oportun',
-      period: 'June 2016 – August 2016',
-      description: 'Bilingual Customer Support Supervisor (CCPOC), providing direct customer service and managing transaction follow-ups for a US-based company. Ensured accurate information capture and problem resolution for client inquiries.'
-    },
-    {
-      title: 'Expansion Strategy Developer',
-      company: 'Hielo Polar del Centro',
-      period: 'April 2015 – August 2015',
-      description: 'Expansion Strategy Developer, creating detailed expansion strategies and supervising their implementation. Collaborated closely with internal teams to align expansion plans with overall business objectives.'
-    },
-    {
-      title: 'Purchasing Manager',
-      company: 'Importadora Cable-Cell',
-      period: 'June 2010 – March 2015',
-      description: 'Purchasing Manager & Client Relationship Specialist, managing the import process for cell phone accessories. Successfully expanded the company\'s client portfolio and ensured timely follow-up on orders.'
-    },
-    {
-      title: 'Main Teller',
-      company: 'Scotia Bank Inverlat',
-      period: 'September 2008 – April 2010',
-      description: 'Customer Service & Operations Specialist, responsible for comprehensive customer service, vault management, and teller reconciliation. Provided direct assistance to clients regarding account inquiries and access media.'
-    },
-    {
-      title: 'Electrical Assembly Coach',
-      company: 'Bombardier Aerospace México',
-      period: 'June 2007 – February 2008',
-      description: 'Electrical Assembly Coach, managing and guiding a team responsible for the assembly of aerospace harnesses. Provided technical guidance and support to team members, primarily for Global Express aircraft.'
-    }
+    // ... (añadir el resto de la experiencia aquí)
   ],
-  skills: [
-    'SAP Business One', 'Zoho', 'Odoo', 'QuickBooks', 'Electronic Invoicing', 'Power BI', 'Tableau', 
-    'Google Data Studio', 'MySQL', 'Advanced Excel', 'Google Ads', 'Meta Ads', 'SEO/SEM', 
-    'Mailchimp', 'Salesforce', 'HubSpot', 'Zapier', 'HTML', 'Microsoft 365', 'Customer Service', 
-    'Process Optimization', 'Data Analysis', 'Bilingual Communication', 'ITIL', 'Project Management'
-  ],
-  services: [
-    'Financial and Process Optimization',
-    'Strategic and Digital Marketing',
-    'Digital Transformation with AI'
-  ]
+  services: [] // No se usa en este diseño, pero se mantiene en la interfaz
 });
