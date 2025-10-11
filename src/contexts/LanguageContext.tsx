@@ -7,7 +7,7 @@ interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
   t: (key: string) => string;
-  tArray: (key: string) => string[];
+  tArray: (key: string) => any[];
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
@@ -63,30 +63,30 @@ const translations = {
     
     certCategoryDigitalTransformation: 'Transformación Digital y Estrategia Comercial',
     certDigitalTransformation: [
-      'Transformación Digital para el Empleo',
-      'Digitalización Comercial - Google My Business y YouTube',
-      'Tu Negocio en Internet'
+      { title: 'Transformación Digital para el Empleo', pdf: '/lovable-uploads/certificado la Transformación Digital Para El Empleo.pdf' },
+      { title: 'Digitalización Comercial - Google My Business y YouTube', pdf: '/lovable-uploads/certificado_digitalizació_comercial.pdf' },
+      { title: 'Tu Negocio en Internet', pdf: '/lovable-uploads/certificado-tunegocio-en-internet.pdf' }
     ],
     
     certCategoryMarketing: 'Marketing y Analítica Digital',
     certMarketing: [
-      'Fundamentos de Marketing Digital (Google)',
-      'Google Analytics para Principiantes',
-      'Google Analytics Avanzado'
+      { title: 'Fundamentos de Marketing Digital (Google)', pdf: '/lovable-uploads/certificado_marketing_digital.pdf' },
+      { title: 'Google Analytics para Principiantes', pdf: '/lovable-uploads/Course_Certificate.pdf' },
+      { title: 'Google Analytics Avanzado', pdf: '/lovable-uploads/Course_Certificate_Google_Advanced .pdf' }
     ],
     
     certCategoryDevelopment: 'Desarrollo Tecnológico',
     certDevelopment: [
-      'Diplomado en Desarrollo Web y Aplicaciones Móviles (726 horas)',
-      'Certificación de Desarrollador Back-end',
-      'Certificación de Desarrollador Front-end',
-      'Certificación de Desarrollador de Aplicaciones Móviles',
-      'Programación Orientada a Objetos'
+      { title: 'Diplomado en Desarrollo Web y Aplicaciones Móviles (726 horas)', pdf: '/lovable-uploads/Diplomado-desarrolloweb-y-apps-moviles.pdf' },
+      { title: 'Certificación de Desarrollador Back-end', pdf: '/lovable-uploads/Certificado-desarrollador-back-end.pdf' },
+      { title: 'Certificación de Desarrollador Front-end', pdf: '/lovable-uploads/Certificado-desarrollador-front-end.pdf' },
+      { title: 'Certificación de Desarrollador de Aplicaciones Móviles', pdf: '/lovable-uploads/Certificado-desarrollador-apps-moviles.pdf' },
+      { title: 'Programación Orientada a Objetos', pdf: '/lovable-uploads/certificado-programador-orientado-objetos.pdf' }
     ],
     
     certCategoryAnalytics: 'Analítica Avanzada y Certificaciones Internacionales',
     certAnalytics: [
-      'SAS Visual Business Analytics Professional Certificate (Coursera)'
+      { title: 'SAS Visual Business Analytics Professional Certificate (Coursera)', pdf: '/lovable-uploads/Coursera TQFDA7DUKFMH.pdf' }
     ],
     
     // Skills
@@ -225,30 +225,30 @@ const translations = {
     
     certCategoryDigitalTransformation: 'Digital Transformation and Commercial Strategy',
     certDigitalTransformation: [
-      'Digital Transformation for Employment',
-      'Commercial Digitalization - Google My Business and YouTube',
-      'Your Business on the Internet'
+      { title: 'Digital Transformation for Employment', pdf: '/lovable-uploads/certificado la Transformación Digital Para El Empleo.pdf' },
+      { title: 'Commercial Digitalization - Google My Business and YouTube', pdf: '/lovable-uploads/certificado_digitalizació_comercial.pdf' },
+      { title: 'Your Business on the Internet', pdf: '/lovable-uploads/certificado-tunegocio-en-internet.pdf' }
     ],
     
     certCategoryMarketing: 'Marketing and Digital Analytics',
     certMarketing: [
-      'Fundamentals of Digital Marketing (Google)',
-      'Google Analytics for Beginners',
-      'Advanced Google Analytics'
+      { title: 'Fundamentals of Digital Marketing (Google)', pdf: '/lovable-uploads/certificado_marketing_digital.pdf' },
+      { title: 'Google Analytics for Beginners', pdf: '/lovable-uploads/Course_Certificate.pdf' },
+      { title: 'Advanced Google Analytics', pdf: '/lovable-uploads/Course_Certificate_Google_Advanced .pdf' }
     ],
     
     certCategoryDevelopment: 'Technological Development',
     certDevelopment: [
-      'Diploma in Web Development and Mobile Applications (726 hours)',
-      'Back-end Developer Certification',
-      'Front-end Developer Certification',
-      'Mobile Application Developer Certification',
-      'Object-Oriented Programming'
+      { title: 'Diploma in Web Development and Mobile Applications (726 hours)', pdf: '/lovable-uploads/Diplomado-desarrolloweb-y-apps-moviles.pdf' },
+      { title: 'Back-end Developer Certification', pdf: '/lovable-uploads/Certificado-desarrollador-back-end.pdf' },
+      { title: 'Front-end Developer Certification', pdf: '/lovable-uploads/Certificado-desarrollador-front-end.pdf' },
+      { title: 'Mobile Application Developer Certification', pdf: '/lovable-uploads/Certificado-desarrollador-apps-moviles.pdf' },
+      { title: 'Object-Oriented Programming', pdf: '/lovable-uploads/certificado-programador-orientado-objetos.pdf' }
     ],
     
     certCategoryAnalytics: 'Advanced Analytics and International Certifications',
     certAnalytics: [
-      'SAS Visual Business Analytics Professional Certificate (Coursera)'
+      { title: 'SAS Visual Business Analytics Professional Certificate (Coursera)', pdf: '/lovable-uploads/Coursera TQFDA7DUKFMH.pdf' }
     ],
     
     // Skills
@@ -364,7 +364,7 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
     return Array.isArray(value) ? key : value || key;
   };
   
-  const tArray = (key: string): string[] => {
+  const tArray = (key: string): any[] => {
     const value = translations[language][key as keyof typeof translations[Language]];
     return Array.isArray(value) ? value : [];
   };

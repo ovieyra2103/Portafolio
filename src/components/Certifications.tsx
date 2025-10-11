@@ -1,7 +1,8 @@
 
-import { Award, Clock, Calendar } from "lucide-react";
+import { Award, Clock, ExternalLink } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { Button } from "@/components/ui/button";
 
 const Certifications = () => {
   const { t, tArray } = useLanguage();
@@ -41,13 +42,30 @@ const Certifications = () => {
                 {category.category}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {category.certs.map((cert, certIndex) => (
+                {category.certs.map((cert: any, certIndex: number) => (
                   <Card 
                     key={certIndex}
                     className="glass-card hover:shadow-md hover:shadow-primary/10 transition-all duration-300 border-l-4 border-l-primary/50"
                   >
                     <CardHeader className="pb-3">
-                      <CardTitle className="text-base leading-snug">{cert}</CardTitle>
+                      <div className="flex items-start justify-between gap-3">
+                        <CardTitle className="text-base leading-snug flex-1">{cert.title}</CardTitle>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          className="h-8 w-8 shrink-0"
+                          asChild
+                        >
+                          <a 
+                            href={cert.pdf} 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            aria-label="Ver certificado"
+                          >
+                            <ExternalLink className="h-4 w-4" />
+                          </a>
+                        </Button>
+                      </div>
                     </CardHeader>
                   </Card>
                 ))}
