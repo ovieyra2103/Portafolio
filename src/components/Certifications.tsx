@@ -4,10 +4,22 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useState } from "react";
+import { Document, Page, pdfjs } from 'react-pdf';
+import 'react-pdf/dist/esm/Page/AnnotationLayer.css';
+import 'react-pdf/dist/esm/Page/TextLayer.css';
+
+pdfjs.GlobalWorkerOptions.workerSrc = `//unpkg.com/pdfjs-dist@${pdfjs.version}/build/pdf.worker.min.mjs`;
 
 const Certifications = () => {
   const { t, tArray } = useLanguage();
   const [selectedPdf, setSelectedPdf] = useState<{ title: string; url: string } | null>(null);
+  const [numPages, setNumPages] = useState<number>(0);
+  const [pageNumber, setPageNumber] = useState<number>(1);
+
+  const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
+    setNumPages(numPages);
+    setPageNumber(1);
+  };
   
   const certificationCategories = [
     {
@@ -87,17 +99,49 @@ const Certifications = () => {
       </div>
 
       <Dialog open={!!selectedPdf} onOpenChange={() => setSelectedPdf(null)}>
-        <DialogContent className="max-w-5xl h-[90vh] p-0">
-          <DialogHeader className="p-6 pb-0">
+        <DialogContent className="max-w-5xl h-[90vh] p-0 flex flex-col">
+          <DialogHeader className="p-6 pb-3">
             <DialogTitle>{selectedPdf?.title}</DialogTitle>
           </DialogHeader>
-          <div className="flex-1 h-full p-6 pt-0">
+          <div className="flex-1 overflow-auto p-6 pt-0">
             {selectedPdf && (
-              <iframe
-                src={selectedPdf.url}
-                className="w-full h-full rounded-lg border"
-                title={selectedPdf.title}
-              />
+              <div className="flex flex-col items-center gap-4">
+                <Document
+                  file={selectedPdf.url}
+                  onLoadSuccess={onDocumentLoadSuccess}
+                  className="w-full"
+                >
+                  <Page
+                    pageNumber={pageNumber}
+                    width={Math.min(window.innerWidth * 0.8, 800)}
+                    renderTextLayer={true}
+                    renderAnnotationLayer={true}
+                  />
+                </Document>
+                {numPages > 1 && (
+                  <div className="flex items-center gap-4 py-2">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setPageNumber(prev => Math.max(1, prev - 1))}
+                      disabled={pageNumber <= 1}
+                    >
+                      Anterior
+                    </Button>
+                    <span className="text-sm text-muted-foreground">
+                      Página {pageNumber} de {numPages}
+                    </span>
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={() => setPageNumber(prev => Math.min(numPages, prev + 1))}
+                      disabled={pageNumber >= numPages}
+                    >
+                      Siguiente
+                    </Button>
+                  </div>
+                )}
+              </div>
             )}
           </div>
         </DialogContent>
