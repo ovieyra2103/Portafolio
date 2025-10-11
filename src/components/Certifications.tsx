@@ -1,11 +1,13 @@
-
-import { Award, Clock, ExternalLink } from "lucide-react";
+import { Award, Clock, FileText, X } from "lucide-react";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { useState } from "react";
 
 const Certifications = () => {
   const { t, tArray } = useLanguage();
+  const [selectedPdf, setSelectedPdf] = useState<{ title: string; url: string } | null>(null);
   
   const certificationCategories = [
     {
@@ -45,7 +47,8 @@ const Certifications = () => {
                 {category.certs.map((cert: any, certIndex: number) => (
                   <Card 
                     key={certIndex}
-                    className="glass-card hover:shadow-md hover:shadow-primary/10 transition-all duration-300 border-l-4 border-l-primary/50"
+                    className="glass-card hover:shadow-md hover:shadow-primary/10 transition-all duration-300 border-l-4 border-l-primary/50 cursor-pointer"
+                    onClick={() => setSelectedPdf({ title: cert.title, url: cert.pdf })}
                   >
                     <CardHeader className="pb-3">
                       <div className="flex items-start justify-between gap-3">
@@ -54,16 +57,12 @@ const Certifications = () => {
                           variant="ghost"
                           size="icon"
                           className="h-8 w-8 shrink-0"
-                          asChild
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedPdf({ title: cert.title, url: cert.pdf });
+                          }}
                         >
-                          <a 
-                            href={cert.pdf} 
-                            target="_blank" 
-                            rel="noopener noreferrer"
-                            aria-label="Ver certificado"
-                          >
-                            <ExternalLink className="h-4 w-4" />
-                          </a>
+                          <FileText className="h-4 w-4" />
                         </Button>
                       </div>
                     </CardHeader>
@@ -86,6 +85,23 @@ const Certifications = () => {
           </Card>
         </div>
       </div>
+
+      <Dialog open={!!selectedPdf} onOpenChange={() => setSelectedPdf(null)}>
+        <DialogContent className="max-w-5xl h-[90vh] p-0">
+          <DialogHeader className="p-6 pb-0">
+            <DialogTitle>{selectedPdf?.title}</DialogTitle>
+          </DialogHeader>
+          <div className="flex-1 h-full p-6 pt-0">
+            {selectedPdf && (
+              <iframe
+                src={selectedPdf.url}
+                className="w-full h-full rounded-lg border"
+                title={selectedPdf.title}
+              />
+            )}
+          </div>
+        </DialogContent>
+      </Dialog>
     </section>
   );
 };
