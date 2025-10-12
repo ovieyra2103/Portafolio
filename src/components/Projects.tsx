@@ -53,7 +53,7 @@ const Projects = () => {
       description: t('project4Description'),
       detailedDescription: t('project4DetailedDescription'),
       tags: ["Logistics", "Optimization", "Analysis"],
-      image: "/src/assets/route-optimization.jpg"
+      image: "./Lovable-uploads/route-optimization.jpg"
     },
     {
       id: 5,
