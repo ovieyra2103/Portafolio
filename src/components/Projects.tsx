@@ -37,7 +37,7 @@ const Projects = () => {
       description: t('project2Description'),
       detailedDescription: t('project2DetailedDescription'),
       tags: ["Odoo", "POS", "Training"],
-      image: "https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=1000&auto=format&fit=crop"
+      image: "./lovable-uploads/Odoo-POS.webm"
     },
     {
       id: 3,
