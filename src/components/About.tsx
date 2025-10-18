@@ -57,15 +57,15 @@ const About = () => {
 
   return (
     <section id="about" className="py-20 relative overflow-hidden">
-      <div className="absolute top-40 right-0 w-72 h-72 bg-primary/5 rounded-full filter blur-3xl animate-pulse-light" />
-      <div className="absolute bottom-20 left-20 w-64 h-64 bg-ocean-300/10 rounded-full filter blur-3xl" />
+      <div className="absolute top-40 right-0 w-72 h-72 bg-primary/5 rounded-full filter blur-3xl animate-float" />
+      <div className="absolute bottom-20 left-20 w-64 h-64 bg-ocean-300/10 rounded-full filter blur-3xl animate-wave" />
       
       <div className="container mx-auto px-4">
-        <h2 className="section-title">{t('aboutTitle')}</h2>
+        <h2 className="section-title animate-fade-in">{t('aboutTitle')}</h2>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mt-12">
           <div className="lg:col-span-2 animate-fade-right">
-            <div className="glass-card rounded-xl p-6 h-full">
+            <div className="glass-card rounded-xl p-6 h-full hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500 group">
               <p className="text-lg mb-4">
                 {t('aboutText1')}
               </p>
@@ -78,13 +78,13 @@ const About = () => {
                 {t('aboutText3')}
               </p>
               
-              <h3 className="text-xl font-semibold mt-6 mb-4">{t('experienceTitle')}</h3>
+              <h3 className="text-xl font-semibold mt-6 mb-4 text-primary">{t('experienceTitle')}</h3>
               
               <div className="space-y-6">
-                <div className="border-l-2 border-primary pl-4 py-2">
+                <div className="border-l-2 border-primary pl-4 py-2 hover:border-l-4 transition-all duration-300 hover:bg-primary/5 rounded-r">
                   <div className="flex justify-between items-start mb-1">
                     <h4 className="font-medium text-primary">{t('commercialOperationsCoordinator')}</h4>
-                    <span className="text-xs text-muted-foreground">Feb 2024 - {t('presentTime')}</span>
+                    <span className="text-xs text-muted-foreground">{t('presentTime')}</span>
                   </div>
                   <p className="text-sm font-medium mb-1">{t('hieloPolarStage2')}</p>
                   <p className="text-sm text-muted-foreground">{t('hieloPolarStage2Description')}</p>
@@ -173,8 +173,8 @@ const About = () => {
               </div>
               
               <div className="mt-8">
-                <Button className="btn-gradient" onClick={handleDownloadCV}>
-                  <Download className="w-4 h-4 mr-2" />
+                <Button className="btn-gradient group" onClick={handleDownloadCV}>
+                  <Download className="w-4 h-4 mr-2 transition-transform group-hover:scale-110 group-hover:animate-bounce" />
                   {t('downloadCV')}
                 </Button>
               </div>
@@ -182,23 +182,23 @@ const About = () => {
           </div>
           
           <div className="animate-fade-left">
-            <div className="glass-card rounded-xl p-6 h-full">
-              <h3 className="text-xl font-semibold mb-6">{t('skillsTitle')}</h3>
+            <div className="glass-card rounded-xl p-6 h-full hover:shadow-2xl hover:shadow-primary/10 transition-all duration-500">
+              <h3 className="text-xl font-semibold mb-6 text-primary">{t('skillsTitle')}</h3>
               
               <div className="flex flex-wrap gap-2">
                 {skills.map((skill, index) => (
-                  <Badge key={index} className="skill-badge">
+                  <Badge key={index} className="skill-badge hover:scale-110 transition-transform duration-300">
                     {skill}
                   </Badge>
                 ))}
               </div>
               
-              <h3 className="text-xl font-semibold mt-8 mb-6">{t('servicesTitle')}</h3>
+              <h3 className="text-xl font-semibold mt-8 mb-6 text-primary">{t('servicesTitle')}</h3>
               <div className="space-y-6">
                 {services.map((service, index) => (
-                  <div key={index} className="bg-primary/5 dark:bg-primary/10 p-4 rounded-lg">
+                  <div key={index} className="bg-primary/5 dark:bg-primary/10 p-4 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-all duration-300 hover:scale-105 hover:shadow-lg group">
                     <div className="flex items-center gap-3 mb-2">
-                      <span className="text-2xl">{service.icon}</span>
+                      <span className="text-2xl group-hover:scale-125 transition-transform duration-300">{service.icon}</span>
                       <h4 className="font-medium text-primary">{service.title}</h4>
                     </div>
                     <p className="text-sm">{service.description}</p>
@@ -206,8 +206,8 @@ const About = () => {
                 ))}
               </div>
               
-              <h3 className="text-xl font-semibold mt-8 mb-4">{t('projectInDevelopment')}</h3>
-              <div className="bg-primary/10 dark:bg-primary/5 p-4 rounded-lg">
+              <h3 className="text-xl font-semibold mt-8 mb-4 text-primary">{t('projectInDevelopment')}</h3>
+              <div className="bg-primary/10 dark:bg-primary/5 p-4 rounded-lg hover:bg-primary/20 dark:hover:bg-primary/10 transition-all duration-300 hover:scale-105 shimmer">
                 <h4 className="font-medium text-primary">{t('aiNexus')}</h4>
                 <p className="text-sm">{t('exp2Description')}</p>
               </div>
@@ -217,12 +217,16 @@ const About = () => {
       </div>
       
       <div className="container mx-auto px-4 mt-16">
-        <h2 className="text-2xl font-bold text-center mb-10">{t('servicesTitle')}</h2>
+        <h2 className="text-2xl font-bold text-center mb-10 text-primary animate-fade-in">{t('servicesTitle')}</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {services.map((service, index) => (
-            <Card key={index} className="p-6 hover:shadow-lg transition-all bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 border-none shadow-md">
-              <div className="text-4xl mb-4 text-center">{service.icon}</div>
+            <Card 
+              key={index} 
+              className="p-6 hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 border-none shadow-md hover:scale-105 hover:-translate-y-2 group animate-fade-in"
+              style={{ animationDelay: `${index * 0.1}s` }}
+            >
+              <div className="text-4xl mb-4 text-center group-hover:scale-125 transition-transform duration-300">{service.icon}</div>
               <h3 className="text-xl font-semibold mb-3 text-center text-primary">{service.title}</h3>
               <p className="text-center text-muted-foreground">{service.description}</p>
             </Card>

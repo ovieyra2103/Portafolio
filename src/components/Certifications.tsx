@@ -42,22 +42,22 @@ const Certifications = () => {
 
   return (
     <section id="certifications" className="py-20 relative overflow-hidden">
-      <div className="absolute top-0 right-0 -mt-20 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl" />
-      <div className="absolute bottom-0 left-0 -mb-20 w-80 h-80 bg-ocean-200/10 rounded-full filter blur-3xl" />
+      <div className="absolute top-0 right-0 -mt-20 w-96 h-96 bg-primary/5 rounded-full filter blur-3xl animate-float" />
+      <div className="absolute bottom-0 left-0 -mb-20 w-80 h-80 bg-ocean-200/10 rounded-full filter blur-3xl animate-wave" />
       
-      <div className="container mx-auto px-4">
-        <h2 className="section-title">{t('certificationsTitle')}</h2>
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 className="section-title animate-fade-in">{t('certificationsTitle')}</h2>
         
         <div className="space-y-12 mt-12">
           {certificationCategories.map((category, categoryIndex) => (
             <div key={categoryIndex} className="animate-fade-in" style={{ animationDelay: `${categoryIndex * 0.15}s` }}>
-              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3">
-                <Award className="h-6 w-6 text-primary" />
+              <h3 className="text-2xl font-bold mb-6 flex items-center gap-3 text-primary">
+                <Award className="h-6 w-6 animate-scale-pulse" />
                 {category.category}
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {category.certs.map((cert: any, certIndex: number) => (
-                  <Card 
+                  <Card
                     key={certIndex}
                     className="glass-card hover:shadow-md hover:shadow-primary/10 transition-all duration-300 border-l-4 border-l-primary/50 cursor-pointer"
                     onClick={() => setSelectedPdf({ title: cert.title, url: cert.pdf })}

@@ -37,17 +37,19 @@ const Header = () => {
 
   return (
     <header
-      className={`fixed top-0 w-full z-40 transition-all duration-300 ${
-        scrolled ? "py-2 bg-white/90 dark:bg-slate-900/90 shadow-md backdrop-blur-md" : "py-4 bg-transparent"
+      className={`fixed top-0 w-full z-40 transition-all duration-500 ${
+        scrolled 
+          ? "py-2 bg-white/95 dark:bg-slate-900/95 shadow-lg backdrop-blur-xl border-b border-primary/10" 
+          : "py-4 bg-transparent"
       }`}
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center">
-          <a href="#home" className="flex items-center">
+          <a href="#home" className="flex items-center group">
             <img 
               src="/lovable-uploads/12d6bab4-a3a4-4cfe-a107-50f628de8a0c.png" 
               alt="Omar Vieyra Logo" 
-              className="h-10 w-auto"
+              className="h-10 w-auto transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
             />
           </a>
 
@@ -57,9 +59,10 @@ const Header = () => {
               <button
                 key={section.name}
                 onClick={() => scrollToSection(section.href)}
-                className="text-sm font-medium text-foreground hover:text-primary transition-colors"
+                className="text-sm font-medium text-foreground hover:text-primary transition-all duration-300 relative group"
               >
                 {section.name}
+                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all duration-300 group-hover:w-full"></span>
               </button>
             ))}
           </nav>
@@ -67,7 +70,7 @@ const Header = () => {
           {/* Mobile Menu Toggle */}
           <button
             onClick={toggleMenu}
-            className="md:hidden text-foreground hover:text-primary"
+            className="md:hidden text-foreground hover:text-primary transition-all duration-300 hover:scale-110"
             aria-label={menuOpen ? "Close menu" : "Open menu"}
           >
             {menuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -77,14 +80,15 @@ const Header = () => {
 
       {/* Mobile Menu Dropdown */}
       {menuOpen && (
-        <div className="md:hidden absolute top-16 left-0 right-0 bg-white dark:bg-slate-900 shadow-lg border-t dark:border-slate-800 animate-fade-in">
+        <div className="md:hidden absolute top-16 left-0 right-0 bg-white/95 dark:bg-slate-900/95 backdrop-blur-xl shadow-2xl border-t border-primary/10 animate-fade-in">
           <div className="container mx-auto px-4 py-4">
             <div className="flex flex-col space-y-4">
-              {sections.map((section) => (
+              {sections.map((section, index) => (
                 <button
                   key={section.name}
                   onClick={() => scrollToSection(section.href)}
-                  className="py-2 text-foreground hover:text-primary transition-colors"
+                  className="py-2 text-foreground hover:text-primary transition-all duration-300 hover:translate-x-2 animate-fade-in"
+                  style={{ animationDelay: `${index * 0.1}s` }}
                 >
                   {section.name}
                 </button>

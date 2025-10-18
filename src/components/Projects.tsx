@@ -74,33 +74,37 @@ const Projects = () => {
   ];
 
   return (
-    <section id="projects" className="py-20 bg-secondary/30 dark:bg-slate-900/30">
-      <div className="container mx-auto px-4">
-        <h2 className="section-title">{t('projectsTitle')}</h2>
+    <section id="projects" className="py-20 bg-secondary/30 dark:bg-slate-900/30 relative overflow-hidden">
+      <div className="absolute top-20 left-0 w-72 h-72 bg-ocean-400/10 rounded-full filter blur-3xl animate-float" />
+      <div className="absolute bottom-20 right-0 w-64 h-64 bg-primary/10 rounded-full filter blur-3xl animate-wave" />
+      
+      <div className="container mx-auto px-4 relative z-10">
+        <h2 className="section-title animate-fade-in">{t('projectsTitle')}</h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
           {projects.map((project, index) => (
             <Dialog key={project.id}>
               <DialogTrigger asChild>
                 <div 
-                  className="project-card animate-fade-in cursor-pointer"
+                  className="project-card animate-fade-in cursor-pointer group hover:scale-105 transition-all duration-500"
                   style={{ animationDelay: `${index * 0.1}s` }}
                 >
-                  <div className="h-48 overflow-hidden">
+                  <div className="h-48 overflow-hidden relative">
+                    <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
                     <img 
                       src={project.image} 
                       alt={project.title} 
-                      className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-125"
                     />
                   </div>
                   
                   <div className="p-5">
-                    <h3 className="text-xl font-semibold mb-2">{project.title}</h3>
+                    <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors duration-300">{project.title}</h3>
                     <p className="text-muted-foreground text-sm mb-4">{project.description}</p>
                     
                     <div className="flex flex-wrap gap-2 mt-auto">
                       {project.tags.map((tag, tagIndex) => (
-                        <span key={tagIndex} className="text-xs px-2 py-1 bg-secondary dark:bg-slate-800 rounded-full">
+                        <span key={tagIndex} className="text-xs px-2 py-1 bg-secondary dark:bg-slate-800 rounded-full hover:bg-primary hover:text-white transition-all duration-300 hover:scale-110">
                           {tag}
                         </span>
                       ))}
@@ -148,8 +152,8 @@ const Projects = () => {
                       </div>
                     </CardContent>
                     <CardFooter className="justify-end">
-                      <Button variant="default" className="btn-gradient">
-                        {t('contactForMore')} <ExternalLink className="ml-2 h-4 w-4" />
+                      <Button variant="default" className="btn-gradient group">
+                        {t('contactForMore')} <ExternalLink className="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1" />
                       </Button>
                     </CardFooter>
                   </Card>
