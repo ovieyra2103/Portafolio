@@ -51,13 +51,13 @@ export const generateInteractivePDF = async (cvData: CVData): Promise<void> => {
   let currentY = 0;
 
   // --- DIBUJAR LA BARRA LATERAL ---
-  pdf.setFillColor(...colors.background);
+  pdf.setFillColor(colors.background[0], colors.background[1], colors.background[2]);
   pdf.rect(0, 0, sidebarWidth, pageHeight, 'F');
   
   // --- 3. MEJORA: ENCABEZADO MINIMALISTA ---
   // Colocamos el nombre y título en la barra lateral para un diseño asimétrico.
   currentY = 30;
-  pdf.setTextColor(...colors.primary);
+  pdf.setTextColor(colors.primary[0], colors.primary[1], colors.primary[2]);
   pdf.setFont('helvetica', 'bold');
   pdf.setFontSize(22);
   // Dividimos el nombre para un mejor ajuste en la barra lateral
@@ -65,7 +65,7 @@ export const generateInteractivePDF = async (cvData: CVData): Promise<void> => {
   pdf.text(nameLines, margin, currentY);
   currentY += (nameLines.length * 8) + 5;
 
-  pdf.setTextColor(...colors.textDark);
+  pdf.setTextColor(colors.textDark[0], colors.textDark[1], colors.textDark[2]);
   pdf.setFont('helvetica', 'normal');
   pdf.setFontSize(10);
   pdf.text(cvData.title, margin, currentY);
@@ -73,11 +73,11 @@ export const generateInteractivePDF = async (cvData: CVData): Promise<void> => {
   // --- SECCIÓN DE CONTACTO EN LA BARRA LATERAL ---
   currentY += 20;
   pdf.setFontSize(9);
-  pdf.setTextColor(...colors.textDark);
+  pdf.setTextColor(colors.textDark[0], colors.textDark[1], colors.textDark[2]);
   
   // Usamos un simple text con link en lugar de la función textWithLink para más control
   pdf.text('CONTACTO', margin, currentY);
-  pdf.setDrawColor(...colors.primary);
+  pdf.setDrawColor(colors.primary[0], colors.primary[1], colors.primary[2]);
   pdf.line(margin, currentY + 1, margin + 15, currentY + 1); // Línea de acento
   currentY += 8;
 
@@ -98,13 +98,13 @@ export const generateInteractivePDF = async (cvData: CVData): Promise<void> => {
   const addSkillCategory = (category: string, items: string[]) => {
     pdf.setFontSize(9);
     pdf.setFont('helvetica', 'bold');
-    pdf.setTextColor(...colors.textDark);
+    pdf.setTextColor(colors.textDark[0], colors.textDark[1], colors.textDark[2]);
     pdf.text(category, margin, currentY);
     currentY += 5;
     
     pdf.setFontSize(8);
     pdf.setFont('helvetica', 'normal');
-    pdf.setTextColor(...colors.textDark);
+    pdf.setTextColor(colors.textDark[0], colors.textDark[1], colors.textDark[2]);
     items.forEach(item => {
       pdf.text(`• ${item}`, margin, currentY);
       currentY += 4.5;
@@ -137,9 +137,9 @@ export const generateInteractivePDF = async (cvData: CVData): Promise<void> => {
   const addSectionHeader = (title: string) => {
     pdf.setFontSize(14);
     pdf.setFont('helvetica', 'bold');
-    pdf.setTextColor(...colors.primary);
+    pdf.setTextColor(colors.primary[0], colors.primary[1], colors.primary[2]);
     pdf.text(title, mainContentX, currentY);
-    pdf.setDrawColor(...colors.primary);
+    pdf.setDrawColor(colors.primary[0], colors.primary[1], colors.primary[2]);
     pdf.setLineWidth(0.5);
     pdf.line(mainContentX, currentY + 2, mainContentX + 30, currentY + 2); // Línea sutil
     currentY += 12;
@@ -149,7 +149,7 @@ export const generateInteractivePDF = async (cvData: CVData): Promise<void> => {
   addSectionHeader('PERFIL PROFESIONAL');
   pdf.setFontSize(10);
   pdf.setFont('helvetica', 'normal');
-  pdf.setTextColor(...colors.textDark);
+  pdf.setTextColor(colors.textDark[0], colors.textDark[1], colors.textDark[2]);
   const profileLines = pdf.splitTextToSize(cvData.profile, mainContentWidth);
   pdf.text(profileLines, mainContentX, currentY);
   currentY += profileLines.length * 5 + 10;
@@ -166,23 +166,23 @@ export const generateInteractivePDF = async (cvData: CVData): Promise<void> => {
     
     pdf.setFontSize(11);
     pdf.setFont('helvetica', 'bold');
-    pdf.setTextColor(...colors.textDark);
+    pdf.setTextColor(colors.textDark[0], colors.textDark[1], colors.textDark[2]);
     pdf.text(exp.title, mainContentX, currentY);
     currentY += 5;
 
     pdf.setFontSize(9);
     pdf.setFont('helvetica', 'normal');
-    pdf.setTextColor(...colors.textLight);
+    pdf.setTextColor(colors.textLight[0], colors.textLight[1], colors.textLight[2]);
     const companyWidth = pdf.getTextWidth(exp.company);
     pdf.text(exp.company, mainContentX, currentY);
     
-    pdf.setTextColor(...colors.textLight);
+    pdf.setTextColor(colors.textLight[0], colors.textLight[1], colors.textLight[2]);
     const periodWidth = pdf.getTextWidth(exp.period);
     pdf.text(exp.period, pageWidth - margin - periodWidth, currentY - 5); // Alineado a la derecha del título
     currentY += 6;
 
     pdf.setFontSize(9);
-    pdf.setTextColor(...colors.textDark);
+    pdf.setTextColor(colors.textDark[0], colors.textDark[1], colors.textDark[2]);
     const expLines = pdf.splitTextToSize(`• ${exp.description.replace(/\n/g, '\n• ')}`, mainContentWidth - 5);
     pdf.text(expLines, mainContentX, currentY);
     currentY += expLines.length * 4.5 + 8;
