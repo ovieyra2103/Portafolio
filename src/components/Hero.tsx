@@ -53,9 +53,11 @@ const Hero = () => {
                 <Mail className="w-4 h-4 mr-2" />
                 {t('contact')}
               </Button>
-              <Button variant="outline">
-                <Linkedin className="w-4 h-4 mr-2" />
-                LinkedIn
+              <Button variant="outline" asChild>
+                <a href="https://www.linkedin.com/in/ovieyra" target="_blank" rel="noopener noreferrer">
+                  <Linkedin className="w-4 h-4 mr-2" />
+                  LinkedIn
+                </a>
               </Button>
               <Button variant="ghost">
                 <Phone className="w-4 h-4 mr-2" />

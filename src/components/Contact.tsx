@@ -83,7 +83,7 @@ const Contact = () => {
                   </div>
                   <div>
                     <h4 className="text-sm font-medium text-muted-foreground">LinkedIn</h4>
-                    <a href="#" className="text-foreground hover:text-primary transition-colors">
+                    <a href="https://www.linkedin.com/in/ovieyra" target="_blank" rel="noopener noreferrer" className="text-foreground hover:text-primary transition-colors">
                       Omar Vieyra
                     </a>
                   </div>
