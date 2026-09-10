@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { FileText, Download } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { Avatar } from "@/components/ui/avatar";
-import { Card } from "@/components/ui/card";
 import { generateInteractivePDF, getCVData } from "./CVGenerator";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -57,8 +56,6 @@ const About = () => {
 
   return (
     <section id="about" className="py-20 relative overflow-hidden">
-      <div className="absolute top-40 right-0 w-72 h-72 bg-primary/5 rounded-full filter blur-3xl animate-float" />
-      <div className="absolute bottom-20 left-20 w-64 h-64 bg-ocean-300/10 rounded-full filter blur-3xl animate-wave" />
       
       <div className="container mx-auto px-4">
         <h2 className="section-title animate-fade-in">{t('aboutTitle')}</h2>
