@@ -110,14 +110,6 @@ const Projects = () => {
                       ))}
                     </div>
                   </div>
-                  
-                  <div className="project-overlay">
-                    <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                    <p className="text-sm mb-4 opacity-90">{project.description}</p>
-                    <Button size="sm" variant="outline" className="border-white text-white hover:bg-white/20">
-                      {t('moreDetails')} <ExternalLink className="ml-2 h-4 w-4" />
-                    </Button>
-                  </div>
                 </div>
               </DialogTrigger>
               <DialogContent className="sm:max-w-[625px]">

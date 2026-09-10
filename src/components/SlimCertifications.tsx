@@ -12,18 +12,13 @@ const SlimCertifications = () => {
 
   const certs = [
     {
-      title: es
-        ? "Diplomado en Desarrollo de Sitios Web y Aplicaciones Móviles"
-        : "Diploma in Web Sites and Mobile Applications Development",
+      title: es ? "Diplomado en Desarrollo de Sitios Web y Aplicaciones Móviles" : "Diploma in Web Sites and Mobile Applications Development",
       hours: "726 " + (es ? "horas" : "hours"),
-      folio: "TOQBZ7880",
       date: es ? "10 de enero de 2022" : "January 10, 2022",
       place: es ? "Ciudad de México" : "Mexico City",
-      signer: "Dr. Javier Elguea Solís",
     },
     {
       title: es ? "Desarrollador Back-end" : "Back-end Developer",
-      folio: "54bnsyJA",
       date: es ? "15 de agosto de 2021" : "August 15, 2021",
     },
     {
@@ -32,7 +27,6 @@ const SlimCertifications = () => {
     },
     {
       title: es ? "Desarrollador de Aplicaciones Móviles" : "Mobile Applications Developer",
-      folio: "d8us8bBh",
       date: es ? "14 de agosto de 2021" : "August 14, 2021",
     },
     {
@@ -70,9 +64,6 @@ const SlimCertifications = () => {
                   </div>
                   <div>
                     <CardTitle className="text-base leading-snug">{cert.title}</CardTitle>
-                    <p className="text-xs text-muted-foreground mt-1">
-                      Fundación Carlos Slim · Capacítate para el Empleo
-                    </p>
                   </div>
                 </div>
               </CardHeader>
@@ -90,7 +81,6 @@ const SlimCertifications = () => {
                 )}
                 {cert.date && <p>{cert.date}</p>}
                 {cert.place && <p>{cert.place}</p>}
-                {cert.signer && <p className="italic">{cert.signer}</p>}
                 <Badge variant="secondary" className="mt-2">
                   {es ? "Verificable con QR" : "QR verifiable"}
                 </Badge>

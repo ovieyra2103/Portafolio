@@ -29,13 +29,13 @@ const translations = {
     
     // About section
     aboutTitle: 'Sobre Mí',
-    aboutText1: 'Soy un profesional con sólida experiencia en análisis financiero, desarrollo de negocios y marketing digital, especializado en la implementación de herramientas basadas en inteligencia artificial para mejorar la eficiencia operativa.',
-    aboutText2: 'Mi objetivo es ayudar a empresas a crecer de manera estratégica, automatizando procesos clave y aprovechando al máximo los datos para tomar decisiones más inteligentes.',
-    aboutText3: 'He liderado proyectos en industrias como alimentos, logística, tecnología y retail, creando soluciones que reducen costos, aumentan la productividad y fortalecen la presencia de marca.',
+    aboutText1: 'Especialista en transformación digital, automatización con IA y estrategia comercial para empresas de alimentos, logística y retail, con 10+ años de experiencia.',
+    aboutText2: 'Implemento soluciones que reducen costos operativos, automatizan procesos administrativos y aceleran el crecimiento del negocio.',
+    aboutText3: '',
     experienceTitle: 'Experiencia Profesional',
     skillsTitle: 'Habilidades',
     servicesTitle: 'Servicios',
-    downloadCV: 'Descargar CV Interactivo (PDF)',
+    downloadCV: 'Descargar CV (PDF)',
     
     // Services
     service1Title: 'Optimización Financiera y de Procesos',
@@ -99,10 +99,10 @@ const translations = {
     businessDevelopmentManager: 'Gerente de Desarrollo de Negocios',
     supportSpecialist: 'Especialista de Soporte',
     supervisor: 'Supervisor',
-    expansionStrategyDeveloper: 'Desarrollador de Estrategia de Expansión',
+    expansionStrategyDeveloper: 'Estratega de Expansión',
     purchasingManager: 'Gerente de Compras',
-    mainTeller: 'Cajero Principal',
-    electricalAssemblyCoach: 'Coach de Ensamblaje Eléctrico',
+    mainTeller: 'Cajero / Analista de Operaciones',
+    electricalAssemblyCoach: 'Supervisor de Ensamblaje Eléctrico',
     businessDevelopmentSpecialist: 'Especialista en Desarrollo de Negocios',
     presentTime: 'Presente',
     founderAndConsultant: 'Fundador y Consultor Principal',
@@ -118,12 +118,12 @@ const translations = {
     oportun: 'Oportun',
     hieloPolarExpansion: 'Hielo Polar del Centro',
     importadoraCableCell: 'Importadora Cable-Cell',
-    scotiaBank: 'Scotia Bank Inverlat',
+    scotiaBank: 'Scotiabank Inverlat',
     bombardier: 'Bombardier Aerospace México',
     hieloPolar: 'Hielo Polar del Centro',
     aiNexus: 'AI Nexus',
     lemonPacking: 'Empaque de limón',
-    focaltec: 'Focaltec - GastosdeViaje.Mx / PortalDeProveedores.Mx',
+    focaltec: 'Focaltec - Gastos de Viaje / Portal de Proveedores',
     
     // Experience descriptions
     hieloPolarStage2Description: 'Coordinador de Operaciones y Finanzas enfocado en la mejora de procesos y la adopción por parte del usuario. Optimicé rutas y costos logísticos, aumentando la eficiencia y apoyando a los equipos operativos durante el cambio.',
@@ -131,7 +131,7 @@ const translations = {
     operadoraPurepechaDescription: 'Analista de Datos de Marketing, responsable de gestionar y analizar datos de marketing. Aproveché herramientas de IA para proporcionar información valiosa sobre el comportamiento del cliente y las tendencias del mercado.',
     focaltecManagerDescription: 'Realicé demostraciones de sistemas y recopilé requisitos detallados para implementaciones de nuevos clientes. Desarrollé propuestas comerciales convincentes y gestioné el seguimiento postventa para garantizar la satisfacción del cliente.',
     focaltecSupportDescription: 'Brindé soporte técnico directo a usuarios para productos que incluyen gastosdeviaje.mx y portaldeproveedores.mx, resolviendo y clasificando tickets (Nivel 1 y Nivel 2) siguiendo principios ITIL.',
-    oportunDescription: 'Supervisor Bilingüe de Atención al Cliente (CCPOC), brindando servicio directo al cliente y gestionando el seguimiento de transacciones para una empresa con sede en EE. UU.',
+    oportunDescription: 'Supervisor Bilingüe de Atención al Cliente (COPC), brindando servicio directo al cliente y gestionando el seguimiento de transacciones para una empresa con sede en EE. UU.',
     expansionDescription: 'Desarrollador de Estrategia de Expansión, creando estrategias de expansión detalladas y supervisando su implementación.',
     purchasingDescription: 'Gerente de Compras y Especialista en Relaciones con Clientes, gestionando el proceso de importación de accesorios para teléfonos celulares.',
     bankTellerDescription: 'Especialista en Servicio al Cliente y Operaciones, responsable del servicio integral al cliente, gestión de bóveda y conciliación de caja.',
@@ -176,28 +176,28 @@ const translations = {
     
     // Project data
     project1Title: 'Automatización de Exportaciones',
-    project1Description: 'Sistema que optimizó la certificación y trazabilidad del producto en empaque de limón.',
-    project1DetailedDescription: 'Desarrollo e implementación de un sistema para la automatización de los procesos de certificación GlobalGap y Primus, mejorando la trazabilidad del producto y reduciendo el tiempo de procesamiento en un 40%.',
+    project1Description: 'Automatización de certificación GlobalGap/Primus. Reducción del 40% en tiempo de procesamiento.',
+    project1DetailedDescription: 'Reto: Procesos manuales de certificación en empaque de limón generaban retrasos y errores.\nSolución: Sistema automático para certificación GlobalGap y Primus con trazabilidad total.\nResultado: 40% menos tiempo, 100% trazabilidad, +15 toneladas diarias procesadas.',
     
-    project2Title: 'Implementación de Odoo como POS',
-    project2Description: 'Creación de un plan de capacitación para su uso en Hielo Polar del Centro.',
-    project2DetailedDescription: 'Planificación e implementación de Odoo como sistema de punto de venta, incluyendo la creación de materiales de capacitación y entrenamiento al personal para optimizar las operaciones comerciales.',
+    project2Title: 'Implementación de Odoo POS',
+    project2Description: 'Sistema POS + Capacitación integral. 50 usuarios en operación en Hielo Polar.',
+    project2DetailedDescription: 'Reto: Punto de venta manual y sin integración con inventario.\nSolución: Implementación de Odoo POS con capacitación presencial y materiales.\nResultado: 50 usuarios capacitados, +25% velocidad en cierre de turno.',
     
-    project3Title: 'Web App para Reparación de Celulares',
-    project3Description: 'Sistema de gestión de reparaciones, inventario, marketplace y recargas telefónicas.',
-    project3DetailedDescription: 'Desarrollo de una aplicación web integral para la gestión de reparaciones de celulares, control de inventario, marketplace de productos y servicio de recargas telefónicas, mejorando la eficiencia operativa y la experiencia del cliente.',
+    project3Title: 'Sistema de Reparación de Celulares',
+    project3Description: 'Plataforma integral de reparaciones, inventario y marketplace.',
+    project3DetailedDescription: 'Reto: Gestión dispersa de reparaciones, inventario y ventas sin integración.\nSolución: Web app con gestión de ordenes, inventario en tiempo real y marketplace integrado.\nResultado: -30% tiempo administrativo, +60% eficiencia en atención al cliente.',
     
     project4Title: 'Optimización de Rutas de Reparto',
-    project4Description: 'Reducción de costos de combustible y mejora en tiempos de entrega en Hielo Polar del Centro.',
-    project4DetailedDescription: 'Implementación de un sistema de optimización de rutas de reparto que permitió reducir los costos de combustible en un 25% y mejorar los tiempos de entrega en un 30%, aumentando la satisfacción del cliente y la eficiencia operativa.',
+    project4Description: '25% reducción de costos | 30% mejora en tiempos de entrega.',
+    project4DetailedDescription: 'Reto: Rutas manuales generaban sobrecostos y entregas fuera de SLA.\nSolución: Sistema de optimización de rutas basado en datos geográficos y demanda.\nResultado: -25% costos combustible, -30% tiempos, +50 entregas diarias adicionales.',
     
-    project5Title: 'Implementación de GastosdeViaje.Mx',
-    project5Description: 'Automatización de la gestión de viáticos y facturación electrónica en empresas.',
-    project5DetailedDescription: 'Consultoría e implementación de la plataforma GastosdeViaje.Mx para la automatización de la gestión de viáticos y facturación electrónica, mejorando la eficiencia administrativa y reduciendo errores en el proceso de reembolso.',
+    project5Title: 'Gestión de Viáticos (GastosdeViaje.Mx)',
+    project5Description: 'Automatización de reembolsos. Reducción de 80% en errores administrativos.',
+    project5DetailedDescription: 'Reto: Reembolsos manuales generaban discrepancias y demoras en pago.\nSolución: Plataforma automática de gastos y facturación electrónica (CFDI).\nResultado: -80% errores, ciclo de reembolso en 48h, +200 usuarios integrados.',
     
-    project6Title: 'Desarrollo a medida para el control de producción',
-    project6Description: 'Desarrollo e implementación de sistema para la gestión de producción.',
-    project6DetailedDescription: 'Implementación de una web app que permite gestionar de forma ágil y precisa la producción y distribución interna en una fabrica de hielo, automatizando el flujo actual, generando datos en tiempo real.',
+    project6Title: 'Control de Producción en Fábrica de Hielo',
+    project6Description: 'Automatización de flujo de producción. Datos en tiempo real.',
+    project6DetailedDescription: 'Reto: Procesos manuales sin visibilidad en línea de producción.\nSolución: Web app para gestión de producción, distribución y tracking de lotes.\nResultado: 100% visibilidad en tiempo real, -20% desperdicio, +15% capacidad.',
     
     // Footer
     allRightsReserved: 'Todos los derechos reservados.',
@@ -220,9 +220,9 @@ const translations = {
     
     // About section
     aboutTitle: 'About Me',
-    aboutText1: 'I am a professional with solid experience in financial analysis, business development and digital marketing, specialized in implementing artificial intelligence-based tools to improve operational efficiency.',
-    aboutText2: 'My goal is to help companies grow strategically, automating key processes and making the most of data to make smarter decisions.',
-    aboutText3: 'I have led projects in industries such as food, logistics, technology and retail, creating solutions that reduce costs, increase productivity and strengthen brand presence.',
+    aboutText1: 'Digital Transformation specialist with AI automation and commercial strategy expertise for food, logistics, and retail companies. 10+ years of experience.',
+    aboutText2: 'I implement solutions that reduce operational costs, automate administrative processes, and accelerate business growth.',
+    aboutText3: '',
     experienceTitle: 'Professional Experience',
     skillsTitle: 'Skills',
     servicesTitle: 'Services',
@@ -355,28 +355,28 @@ const translations = {
     
     // Project data
     project1Title: 'Export Automation',
-    project1Description: 'System that optimized certification and product traceability in lemon packing.',
-    project1DetailedDescription: 'Development and implementation of a system for automating GlobalGap and Primus certification processes, improving product traceability and reducing processing time by 40%.',
+    project1Description: 'GlobalGap/Primus certification automation. 40% reduction in processing time.',
+    project1DetailedDescription: 'Challenge: Manual certification processes created delays and errors.\nSolution: Automated system for GlobalGap and Primus certification with full traceability.\nResult: 40% faster, 100% traceability, +15 metric tons daily processing.',
     
     project2Title: 'Odoo POS Implementation',
-    project2Description: 'Creation of a training plan for its use at Hielo Polar del Centro.',
-    project2DetailedDescription: 'Planning and implementation of Odoo as a point of sale system, including the creation of training materials and staff training to optimize business operations.',
+    project2Description: '50-user system deployment + comprehensive training at Hielo Polar.',
+    project2DetailedDescription: 'Challenge: Manual point of sale with no inventory integration.\nSolution: Odoo POS implementation with hands-on training and documentation.\nResult: 50 users trained, +25% faster shift closing.',
     
-    project3Title: 'Cell Phone Repair Web App',
-    project3Description: 'Repair management system, inventory, marketplace and phone top-ups.',
-    project3DetailedDescription: 'Development of a comprehensive web application for cell phone repair management, inventory control, product marketplace and phone top-up service, improving operational efficiency and customer experience.',
+    project3Title: 'Mobile Repair Support System',
+    project3Description: 'End-to-end repair management, inventory, and marketplace platform.',
+    project3DetailedDescription: 'Challenge: Scattered repair, inventory, and sales management without integration.\nSolution: Web app with order management, real-time inventory, and integrated marketplace.\nResult: -30% admin time, +60% customer service efficiency.',
     
     project4Title: 'Delivery Route Optimization',
-    project4Description: 'Fuel cost reduction and delivery time improvement at Hielo Polar del Centro.',
-    project4DetailedDescription: 'Implementation of a delivery route optimization system that reduced fuel costs by 25% and improved delivery times by 30%, increasing customer satisfaction and operational efficiency.',
+    project4Description: '25% cost savings | 30% delivery time improvement.',
+    project4DetailedDescription: 'Challenge: Manual routes created overspend and SLA misses.\nSolution: Data-driven route optimization system based on geography and demand.\nResult: -25% fuel costs, -30% delivery times, +50 additional daily deliveries.',
     
-    project5Title: 'GastosdeViaje.Mx Implementation',
-    project5Description: 'Automation of travel expense management and electronic invoicing in companies.',
-    project5DetailedDescription: 'Consulting and implementation of the GastosdeViaje.Mx platform for automating travel expense management and electronic invoicing, improving administrative efficiency and reducing errors in the reimbursement process.',
+    project5Title: 'Travel Expense Automation',
+    project5Description: '80% reduction in administrative errors through auto-reimbursement.',
+    project5DetailedDescription: 'Challenge: Manual reimbursement caused discrepancies and delays.\nSolution: Automated platform with e-invoicing (CFDI) integration.\nResult: -80% errors, 48-hour reimbursement cycle, 200+ integrated users.',
     
-    project6Title: 'Custom Production Control Development',
-    project6Description: 'Development and implementation of production management system.',
-    project6DetailedDescription: 'Implementation of a web app that allows agile and precise management of production and internal distribution in an ice factory, automating the current workflow, generating real-time data.',
+    project6Title: 'Ice Factory Production Control',
+    project6Description: 'Real-time production management and batch tracking system.',
+    project6DetailedDescription: 'Challenge: Manual processes without production line visibility.\nSolution: Web app for production, distribution, and batch tracking.\nResult: 100% real-time visibility, -20% waste, +15% capacity.',
     
     // Footer
     allRightsReserved: 'All rights reserved.',

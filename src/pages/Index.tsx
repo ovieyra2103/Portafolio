@@ -21,9 +21,9 @@ const Index = () => {
         <Hero />
         <About />
         <Projects />
+        <JBMProject />
         <Certifications />
         <SlimCertifications />
-        <JBMProject />
         <Contact />
       </main>
       <Footer />
