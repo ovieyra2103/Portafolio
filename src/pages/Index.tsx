@@ -10,12 +10,10 @@ import SlimCertifications from "@/components/SlimCertifications";
 import JBMProject from "@/components/JBMProject";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
-import ParticlesBackground from "@/components/ParticlesBackground";
 
 const Index = () => {
   return (
-    <div className="min-h-screen flex flex-col relative">
-      <ParticlesBackground />
+    <div className="min-h-screen flex flex-col relative bg-background">
       <ThemeToggle />
       <LanguageToggle />
       <Header />
