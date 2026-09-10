@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { FileText, Download } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { Avatar } from "@/components/ui/avatar";
-import { Card } from "@/components/ui/card";
 import { generateInteractivePDF, getCVData } from "./CVGenerator";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -57,8 +56,6 @@ const About = () => {
 
   return (
     <section id="about" className="py-20 relative overflow-hidden">
-      <div className="absolute top-40 right-0 w-72 h-72 bg-primary/5 rounded-full filter blur-3xl animate-float" />
-      <div className="absolute bottom-20 left-20 w-64 h-64 bg-ocean-300/10 rounded-full filter blur-3xl animate-wave" />
       
       <div className="container mx-auto px-4">
         <h2 className="section-title animate-fade-in">{t('aboutTitle')}</h2>
@@ -213,24 +210,6 @@ const About = () => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-      
-      <div className="container mx-auto px-4 mt-16">
-        <h2 className="text-2xl font-bold text-center mb-10 text-primary animate-fade-in">{t('servicesTitle')}</h2>
-        
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <Card 
-              key={index} 
-              className="p-6 hover:shadow-2xl transition-all duration-500 bg-gradient-to-br from-white to-gray-50 dark:from-gray-900 dark:to-gray-800 border-none shadow-md hover:scale-105 hover:-translate-y-2 group animate-fade-in"
-              style={{ animationDelay: `${index * 0.1}s` }}
-            >
-              <div className="text-4xl mb-4 text-center group-hover:scale-125 transition-transform duration-300">{service.icon}</div>
-              <h3 className="text-xl font-semibold mb-3 text-center text-primary">{service.title}</h3>
-              <p className="text-center text-muted-foreground">{service.description}</p>
-            </Card>
-          ))}
         </div>
       </div>
     </section>

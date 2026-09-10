@@ -43,14 +43,15 @@ const Header = () => {
           : "py-4 bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 md:pr-36">
         <div className="flex justify-between items-center">
-          <a href="#home" className="flex items-center group">
-            <img 
-              src="/lovable-uploads/12d6bab4-a3a4-4cfe-a107-50f628de8a0c.png" 
-              alt="Omar Vieyra Logo" 
-              className="h-10 w-auto transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
-            />
+          <a href="#home" className="flex items-center gap-2 group">
+            <span className="flex h-9 w-9 items-center justify-center rounded-lg bg-primary text-primary-foreground font-semibold">
+              OV
+            </span>
+            <span className="text-base font-semibold tracking-tight text-foreground">
+              Omar <span className="text-primary">Vieyra</span>
+            </span>
           </a>
 
           {/* Desktop Menu */}

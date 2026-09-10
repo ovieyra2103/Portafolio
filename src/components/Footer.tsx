@@ -1,29 +1,50 @@
-
-import { Heart } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Plane } from "lucide-react";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Footer = () => {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const currentYear = new Date().getFullYear();
-  
+
   return (
-    <footer className="py-8 border-t border-border">
-      <div className="container mx-auto px-4">
-        <div className="flex flex-col md:flex-row justify-between items-center">
-          <div className="mb-4 md:mb-0">
-            <span className="text-2xl font-bold text-primary">
+    <footer className="border-t border-border bg-secondary/40">
+      <div className="container mx-auto px-4 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <span className="text-xl font-semibold text-primary">
               Omar<span className="text-foreground">Vieyra</span>
             </span>
-          </div>
-          
-          <div className="text-center md:text-right">
-            <p className="text-sm text-muted-foreground">
-              &copy; {currentYear} Omar Vieyra. {t('allRightsReserved')}
-            </p>
-            <p className="text-xs text-muted-foreground mt-1 flex items-center justify-center md:justify-end">
-              {t('madeWith')} <Heart className="h-3 w-3 mx-1 text-red-500 fill-red-500" /> {t('in')} Acámbaro, Guanajuato.
+            <p className="mt-3 text-sm text-muted-foreground max-w-xs">
+              {t('heroTitle')}
             </p>
           </div>
+
+          <div className="space-y-3 text-sm">
+            <a href="mailto:omarvieyra@hotmail.com" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+              <Mail className="h-4 w-4" /> omarvieyra@hotmail.com
+            </a>
+            <a href="tel:+524171308050" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+              <Phone className="h-4 w-4" /> +52 (417) 130-8050
+            </a>
+            <a href="https://www.linkedin.com/in/ovieyra" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors">
+              <Linkedin className="h-4 w-4" /> linkedin.com/in/ovieyra
+            </a>
+          </div>
+
+          <div className="space-y-3 text-sm text-muted-foreground">
+            <p className="flex items-center gap-2">
+              <MapPin className="h-4 w-4" /> Acámbaro, Guanajuato, México
+            </p>
+            <p className="flex items-start gap-2">
+              <Plane className="h-4 w-4 mt-0.5 shrink-0" />
+              {language === 'es'
+                ? 'Disponibilidad para viajar a Guadalajara 1 vez cada 3 meses.'
+                : 'Available to travel to Guadalajara once every 3 months.'}
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-10 border-t border-border pt-6 text-xs text-muted-foreground">
+          &copy; {currentYear} Omar Vieyra. {t('allRightsReserved')}
         </div>
       </div>
     </footer>
