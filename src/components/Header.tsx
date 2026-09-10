@@ -43,7 +43,7 @@ const Header = () => {
           : "py-4 bg-transparent"
       }`}
     >
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 md:pr-36">
         <div className="flex justify-between items-center">
           <a href="#home" className="flex items-center group">
             <img 
