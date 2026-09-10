@@ -55,8 +55,8 @@ const JBMProject = () => {
       <div className="container mx-auto px-4 relative z-10">
         <h2 className="section-title animate-fade-in">
           {es
-            ? "Proyecto Destacado - JBM · Corporación Industrial Uruapan (CIU)"
-            : "Featured Project - JBM · Corporación Industrial Uruapan (CIU)"}
+            ? "Proyecto Destacado - JBM · Corporación Industrial Apatzingán (CIU)"
+            : "Featured Project - JBM · Corporación Industrial Apatzingán (CIU)"}
         </h2>
         <p className="text-muted-foreground mt-4 max-w-3xl">
           {es
@@ -68,12 +68,12 @@ const JBMProject = () => {
           <span className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-1.5 text-sm font-medium text-primary-foreground">
             <Lock className="h-4 w-4" />
             {es
-              ? "Corporación Industrial Uruapan (CIU) - JBM"
-              : "Corporación Industrial Uruapan (CIU) - JBM"}
+              ? "Corporación Industrial Apatzingán (CIU) - JBM"
+              : "Corporación Industrial Apatzingán (CIU) - JBM"}
           </span>
           <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
             <MapPin className="h-4 w-4 text-primary" />
-            Uruapan, Michoacán
+            Apatzingán, Michoacán
           </span>
         </div>
 
@@ -134,7 +134,7 @@ const JBMProject = () => {
 
                 <p className="flex items-center gap-2 text-xs text-muted-foreground mt-4">
                   <MapPin className="h-3.5 w-3.5 text-primary" />
-                  Uruapan, Michoacán
+                  Apatzingán, Michoacán
                 </p>
               </CardContent>
             </Card>
