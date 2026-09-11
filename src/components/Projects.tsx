@@ -23,6 +23,7 @@ import pesajeImg from "@/assets/jbm-pesaje-neumatico.png.asset.json";
 import lmxImg from "@/assets/jbm-lmx8-16-nvidia.png.asset.json";
 import cerebroPdf from "@/assets/JBM_Cerebro_IA.pdf.asset.json";
 import playbookPdf from "@/assets/Juliana_POS_Playbook.pdf.asset.json";
+import routeVideo from "@/assets/route-optimization.mp4.asset.json";
 
 const Projects = () => {
   const { t, language } = useLanguage();
