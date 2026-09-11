@@ -212,7 +212,7 @@ const Projects = () => {
                 >
                   <div className="h-48 overflow-hidden relative">
                     <div className="absolute inset-0 bg-gradient-to-t from-primary/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10" />
-                    {project.id === 4 ? (
+                    {project.id === 6 ? (
                       <video
                         src={routeVideo.url}
                         autoPlay
@@ -261,7 +261,7 @@ const Projects = () => {
                   <Card>
                     <CardHeader className="p-0">
                       <div className="h-48 overflow-hidden rounded-t-lg">
-                        {project.id === 4 ? (
+                        {project.id === 6 ? (
                           <video
                             src={routeVideo.url}
                             autoPlay
