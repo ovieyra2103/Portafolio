@@ -90,7 +90,7 @@ const translations = {
     ],
     
     // Skills
-    skills: ['Zoho Inventory', 'Zoho Books', 'Zoho Expenses', 'Google Colab', 'Power BI', 'Microsoft Fabric', 'GlobalGap', 'Primus', 'Automatización', 'Optimización de Rutas', 'Gestión de Viáticos', 'Marketing con IA', 'Consultoría'],
+    skills: ['Python', 'JavaScript', 'SQL', 'Power BI DAX / Power Query', 'Odoo ERP', 'APIs / ETL', 'OpenAI / Claude APIs', 'Power Automate', 'n8n', 'NVIDIA Jetson Orin Nano', 'PLC Siemens', 'Celdas de Carga'],
     
     // Experience
     commercialOperationsCoordinator: 'Coordinador de Operaciones Comerciales y Finanzas',
@@ -281,7 +281,7 @@ const translations = {
     ],
     
     // Skills
-    skills: ['SAP Business One', 'Zoho', 'Odoo', 'QuickBooks', 'Power BI', 'Tableau', 'Google Data Studio', 'MySQL', 'Advanced Excel', 'Google Ads', 'Meta Ads', 'SEO/SEM', 'Mailchimp', 'Salesforce', 'HubSpot', 'Zapier', 'HTML', 'Microsoft 365', 'Customer Service', 'Process Optimization', 'Data Analysis', 'Bilingual Communication'],
+    skills: ['Python', 'JavaScript', 'SQL', 'Power BI DAX / Power Query', 'Odoo ERP', 'APIs / ETL', 'OpenAI / Claude APIs', 'Power Automate', 'n8n', 'NVIDIA Jetson Orin Nano', 'Siemens PLC', 'Load Cells'],
     
     // Experience
     commercialOperationsCoordinator: 'Commercial Operations and Finance Coordinator',
