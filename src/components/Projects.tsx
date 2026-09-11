@@ -261,11 +261,22 @@ const Projects = () => {
                   <Card>
                     <CardHeader className="p-0">
                       <div className="h-48 overflow-hidden rounded-t-lg">
-                        <img 
-                          src={project.image} 
-                          alt={project.title} 
-                          className="w-full h-full object-cover"
-                        />
+                        {project.id === 4 ? (
+                          <video
+                            src={routeVideo.url}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="w-full h-full object-cover"
+                          />
+                        ) : (
+                          <img 
+                            src={project.image} 
+                            alt={project.title} 
+                            className="w-full h-full object-cover"
+                          />
+                        )}
                       </div>
                     </CardHeader>
                     <CardContent className="pt-6">
