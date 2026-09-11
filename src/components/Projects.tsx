@@ -73,7 +73,7 @@ const Projects = () => {
       description: t('project1Description'),
       detailedDescription: t('project1DetailedDescription'),
       tags: ["GlobalGap", "Primus", t('skills')[8] || "Automation"],
-      image: "https://images.unsplash.com/photo-1600880292203-757bb62b4baf?q=80&w=1000&auto=format&fit=crop"
+      image: "./Lovable/uploads/empaque.jpg?q=80&w=1000&auto=format&fit=crop"
     },
     {
       id: 4,
