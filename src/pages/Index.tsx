@@ -5,9 +5,7 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Projects from "@/components/Projects";
-import Certifications from "@/components/Certifications";
 import SlimCertifications from "@/components/SlimCertifications";
-import JBMProject from "@/components/JBMProject";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -21,8 +19,6 @@ const Index = () => {
         <Hero />
         <About />
         <Projects />
-        <JBMProject />
-        <Certifications />
         <SlimCertifications />
         <Contact />
       </main>

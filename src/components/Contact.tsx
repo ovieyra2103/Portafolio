@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { Mail, Send, Linkedin, MessageSquare } from "lucide-react";
+import { Mail, Phone, Send, Linkedin, MessageSquare } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { useLanguage } from "@/contexts/LanguageContext";
 
@@ -65,6 +65,18 @@ const Contact = () => {
                     <h4 className="text-sm font-medium text-muted-foreground">{t('email')}</h4>
                     <a href="mailto:omarvieyra@hotmail.com" className="text-foreground hover:text-primary transition-colors">
                       omarvieyra@hotmail.com
+                    </a>
+                  </div>
+                </div>
+                
+                <div className="flex items-center group/item hover:bg-primary/5 p-2 rounded-lg transition-all duration-300">
+                  <div className="bg-primary/10 p-3 rounded-full mr-4 group-hover/item:scale-110 transition-transform duration-300">
+                    <Phone className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <h4 className="text-sm font-medium text-muted-foreground">Teléfono</h4>
+                    <a href="tel:+524171308050" className="text-foreground hover:text-primary transition-colors">
+                      +52 (417) 130-8050
                     </a>
                   </div>
                 </div>

@@ -1,7 +1,7 @@
 
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { FileText, Download, TrendingUp, Zap, BarChart3 } from "lucide-react";
+import { FileText, Download } from "lucide-react";
 import { toast } from "@/hooks/use-toast";
 import { Avatar } from "@/components/ui/avatar";
 import { generateInteractivePDF, getCVData } from "./CVGenerator";
@@ -14,17 +14,17 @@ const About = () => {
   
   const services = [
     {
-      icon: BarChart3,
+      icon: "🔍",
       title: t('service1Title'),
       description: t('service1Description')
     },
     {
-      icon: TrendingUp,
+      icon: "📈",
       title: t('service2Title'),
       description: t('service2Description')
     },
     {
-      icon: Zap,
+      icon: "🤖",
       title: t('service3Title'),
       description: t('service3Description')
     }
@@ -195,12 +195,18 @@ const About = () => {
                 {services.map((service, index) => (
                   <div key={index} className="bg-primary/5 dark:bg-primary/10 p-4 rounded-lg hover:bg-primary/10 dark:hover:bg-primary/20 transition-all duration-300 hover:scale-105 hover:shadow-lg group">
                     <div className="flex items-center gap-3 mb-2">
-                      <service.icon className="h-6 w-6 text-primary group-hover:scale-125 transition-transform duration-300" />
+                      <span className="text-2xl group-hover:scale-125 transition-transform duration-300">{service.icon}</span>
                       <h4 className="font-medium text-primary">{service.title}</h4>
                     </div>
                     <p className="text-sm">{service.description}</p>
                   </div>
                 ))}
+              </div>
+              
+              <h3 className="text-xl font-semibold mt-8 mb-4 text-primary">{t('projectInDevelopment')}</h3>
+              <div className="bg-primary/10 dark:bg-primary/5 p-4 rounded-lg hover:bg-primary/20 dark:hover:bg-primary/10 transition-all duration-300 hover:scale-105 shimmer">
+                <h4 className="font-medium text-primary">{t('aiNexus')}</h4>
+                <p className="text-sm">{t('exp2Description')}</p>
               </div>
             </div>
           </div>

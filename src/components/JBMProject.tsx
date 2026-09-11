@@ -25,26 +25,29 @@ const JBMProject = () => {
     {
       image: pesajeImg.url,
       title: es
-        ? "Sistema de Pesaje y Llenado Neumático"
-        : "Pneumatic Weighing and Filling System",
+        ? "JBM - Sistema de Pesaje y Llenado Neumático Inteligente - Caja de Plástico"
+        : "JBM - Intelligent Pneumatic Weighing and Filling System - Plastic Crate",
       description: es
-        ? "Reto: Llenado manual de cajas sin precisión en peso.\nSolución: Sistema automático de tolva, pesaje (18.5 kg) y descarga neumática.\nResultado: +30% velocidad, variación <50g, 0 rechazos por peso."
-        : "Challenge: Manual box filling without weight precision.\nSolution: Automated hopper system with load cell, 18.5 kg scale, and pneumatic gate.\nResult: +30% speed, <50g variance, zero weight-related rejects.",
+        ? "Diseño e implementación de sistema de tolva de recepción y pesaje con célula de carga (sensor de peso), flujo de fruta (limones) desde cinta transportadora superior de 4 vías, compuerta pivotante con actuador neumático lineal, lógica neumática (pulsar botón → válvula neumática → pistón/cilindro), escala digital 18.5 kg, lógica de activación de gatillo (posición cerrada/botón no pulsado vs posición abierta/botón pulsado), cascada de limones a caja de plástico. Sistema de pesaje manual con botón de activación. Documentación técnica isométrica."
+        : "Design and implementation of a receiving hopper and weighing system with load cell (weight sensor), lime flow from a 4-lane upper conveyor, pivoting gate with linear pneumatic actuator, pneumatic logic (press button → pneumatic valve → piston/cylinder), 18.5 kg digital scale, trigger activation logic (closed position/button not pressed vs open position/button pressed), lime cascade into a plastic crate. Manual weighing system with activation button. Isometric technical documentation.",
       tags: es
-        ? ["Celdas de Carga", "Neumática", "Automatización", "Diseño Mecatrónico"]
-        : ["Load Cells", "Pneumatics", "Automation", "Mechatronic Design"],
+        ? ["Celdas de Carga", "Neumática", "Automatización Industrial", "Diseño Mecatrónico"]
+        : ["Load Cells", "Pneumatics", "Industrial Automation", "Mechatronic Design"],
     },
     {
       image: lmxImg.url,
       title: es
-        ? "LMX8-16: Selección de Limones con IA en el Edge"
-        : "LMX8-16: AI-Powered Lemon Sorting at the Edge",
+        ? "JBM LMX8-16 - Corporación Industrial Uruapan (CIU) - Sistema Inteligente de Sorting con NVIDIA Jetson Orin Nano"
+        : "JBM LMX8-16 - Corporación Industrial Uruapan (CIU) - Intelligent Sorting System with NVIDIA Jetson Orin Nano",
       description: es
-        ? "Reto: Clasificación manual de limones generaba inconsistencias y cuello de botella.\nSolución: NVIDIA Jetson Orin Nano + PLC Siemens + celdas de carga para integración de IA en tiempo real.\nResultado: +40% precisión, -50% rechazos, 8 salidas automáticas, arquitectura Industry 4.0."
-        : "Challenge: Manual lemon sorting created inconsistencies and processing bottleneck.\nSolution: NVIDIA Jetson Orin Nano + Siemens PLC + load cells for real-time AI integration.\nResult: +40% accuracy, -50% rejects, 8 automated outputs, Industry 4.0 architecture.",
+        ? "Arquitectura completa de sistema de selección y empaque de limones LMX8-16. Integración de compuerta de corte existente en rampa (LMX8-16) con pistón, señal analógica de fuerza (8 salidas), caja de suma IP65 (báscula inferior), celdas de carga tipo barra, PLC de Control Siemens para datos de compuerta, Unidad de Procesamiento de Datos IA - NVIDIA Jetson Orin Nano, datos de peso individual a base de datos, indicador de estado de operador, zona de carga excéntrica y movimiento - datos de calibración. Matriz de decisión: báscula inferior vs báscula superior, tipo de empaque, sistema de pesaje, adaptador de LANAID, selección de llenado, selección modo automático. Esquema de red y control: PLC → NVIDIA Jetson → PC Supervisión → Base de Datos."
+        : "Complete architecture of the LMX8-16 lime sorting and packing system. Integration of the existing ramp cutting gate (LMX8-16) with piston, analog force signal (8 outputs), IP65 summing box (lower scale), bar-type load cells, Siemens control PLC for gate data, AI Data Processing Unit - NVIDIA Jetson Orin Nano, individual weight data to database, operator status indicator, eccentric load and movement zone - calibration data. Decision matrix: lower scale vs upper scale, packaging type, weighing system, LANAID adapter, filling selection, automatic mode selection. Network and control scheme: PLC → NVIDIA Jetson → Supervision PC → Database.",
+      achievement: es
+        ? "Logro: Transformación digital de empaque de agroindustria con IA en el edge."
+        : "Achievement: Digital transformation of agro-industrial packing with AI at the edge.",
       tags: es
-        ? ["NVIDIA Jetson Orin Nano", "PLC Siemens", "IA Edge", "Industry 4.0", "Celdas de Carga"]
-        : ["NVIDIA Jetson Orin Nano", "Siemens PLC", "Edge AI", "Industry 4.0", "Load Cells"],
+        ? ["NVIDIA Jetson Orin Nano", "PLC Siemens", "IA Edge", "Industria 4.0", "Celdas de Carga", "Automatización"]
+        : ["NVIDIA Jetson Orin Nano", "Siemens PLC", "Edge AI", "Industry 4.0", "Load Cells", "Automation"],
     },
   ];
 
@@ -55,8 +58,8 @@ const JBMProject = () => {
       <div className="container mx-auto px-4 relative z-10">
         <h2 className="section-title animate-fade-in">
           {es
-            ? "Proyecto Destacado - JBM · Corporación Industrial Apatzingán (CIU)"
-            : "Featured Project - JBM · Corporación Industrial Apatzingán (CIU)"}
+            ? "Proyecto Destacado - JBM · Corporación Industrial Uruapan (CIU)"
+            : "Featured Project - JBM · Corporación Industrial Uruapan (CIU)"}
         </h2>
         <p className="text-muted-foreground mt-4 max-w-3xl">
           {es
@@ -68,12 +71,12 @@ const JBMProject = () => {
           <span className="inline-flex items-center gap-2 rounded-full bg-primary px-4 py-1.5 text-sm font-medium text-primary-foreground">
             <Lock className="h-4 w-4" />
             {es
-              ? "Corporación Industrial Apatzingán (CIU) - JBM"
-              : "Corporación Industrial Apatzingán (CIU) - JBM"}
+              ? "Proyecto Confidencial - Corporación Industrial Uruapan"
+              : "Confidential Project - Corporación Industrial Uruapan"}
           </span>
           <span className="inline-flex items-center gap-2 text-sm text-muted-foreground">
             <MapPin className="h-4 w-4 text-primary" />
-            Apatzingán, Michoacán
+            Uruapan, Michoacán
           </span>
         </div>
 
@@ -134,7 +137,7 @@ const JBMProject = () => {
 
                 <p className="flex items-center gap-2 text-xs text-muted-foreground mt-4">
                   <MapPin className="h-3.5 w-3.5 text-primary" />
-                  Apatzingán, Michoacán
+                  Uruapan, Michoacán
                 </p>
               </CardContent>
             </Card>
